@@ -1,5 +1,7 @@
 # about-page
 
+A nice about page based on [MultiType](https://github.com/drakeet/MultiType), material design and easy to use.
+
 #### Usage
 
 ```java
