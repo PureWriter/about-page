@@ -2,7 +2,7 @@
 
 #### Usage
 
-```
+```java
 public class MainActivity extends AboutActivity {
 
     @SuppressLint("SetTextI18n") @Override
