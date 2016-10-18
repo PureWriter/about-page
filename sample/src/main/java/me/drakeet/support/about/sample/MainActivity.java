@@ -18,19 +18,12 @@ import me.drakeet.support.about.Line;
 
 public class MainActivity extends AboutActivity {
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-
     @SuppressLint("SetTextI18n") @Override
     protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
         icon.setImageResource(R.mipmap.ic_launcher);
         slogan.setText("About Page By drakeet");
         version.setText("v" + BuildConfig.VERSION_NAME);
     }
-
 
     @Override protected void onItemsCreated(@NonNull Items items) {
         items.add(new Category("介绍与帮助"));
@@ -47,11 +40,9 @@ public class MainActivity extends AboutActivity {
             "https://github.com/drakeet/about-page"));
     }
 
-
     @Override protected void onActionClick(View action) {
         onClickShare();
     }
-
 
     public void onClickShare() {
         Intent intent = new Intent(Intent.ACTION_SEND);
