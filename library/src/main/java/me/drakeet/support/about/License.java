@@ -1,0 +1,30 @@
+package me.drakeet.support.about;
+
+import android.support.annotation.NonNull;
+import me.drakeet.multitype.Item;
+
+/**
+ * @author drakeet
+ */
+public class License implements Item {
+
+    public static final String MIT = "MIT License";
+    public static final String APACHE_2 = "Apache Software License 2.0";
+
+    public String name;
+    public String author;
+    public String type;
+    public String url;
+
+
+    public License() {}
+
+
+    public License(
+        @NonNull String name, @NonNull String author, @NonNull String type, @NonNull String url) {
+        this.name = name;
+        this.author = author;
+        this.type = type;
+        this.url = url;
+    }
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="about_page_header_height">230dp</dimen>
+    <dimen name="about_page_avatar_size">38dp</dimen>
+    <dimen name="about_page_license_text_size">13sp</dimen>
+</resources>

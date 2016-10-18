@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools"
+    tools:ignore="ResourceName">
+
+    <style name="AboutPage">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+    </style>
+
+    <style name="AboutPage.Item">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">8dp</item>
+        <item name="android:layout_marginRight">8dp</item>
+    </style>
+
+    <style name="AboutPage.Header"/>
+
+    <style name="AboutPage.Header.ToolbarTitleExpanded"
+        parent="@android:style/TextAppearance">
+        <item name="android:textColor">#00000000</item>
+    </style>
+
+    <style name="AboutPage.Header.Icon">
+        <item name="android:layout_width">96dp</item>
+        <item name="android:layout_height">96dp</item>
+    </style>
+
+    <style name="AboutPage.Header.Slogan">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="AboutPage.Header.Version">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">8dp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="AboutPage.FrameButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:clickable">true</item>
+        <item name="android:paddingTop">2dp</item>
+        <item name="android:paddingBottom">2dp</item>
+        <item name="android:paddingLeft">10dp</item>
+        <item name="android:paddingRight">10dp</item>
+        <item name="android:background">@drawable/about_page_button_dark</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="AboutPage.FrameButton.Light">
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:background">@drawable/about_page_button_light</item>
+    </style>
+
+    <style name="AboutPage.Item.Category">
+        <item name="android:paddingTop">12dp</item>
+        <item name="android:paddingBottom">12dp</item>
+        <item name="android:paddingLeft">1dp</item>
+        <item name="android:paddingRight">1dp</item>
+        <item name="android:textColor">@color/about_page_category_text_color</item>
+    </style>
+
+    <style name="AboutPage.Item.Line">
+        <item name="android:layout_height">1px</item>
+        <item name="android:background">@color/about_page_line</item>
+    </style>
+
+    <style name="AboutPage.Item.Card">
+        <item name="android:layout_marginBottom">12dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingTop">16dp</item>
+        <item name="android:paddingBottom">16dp</item>
+        <item name="android:background">@drawable/about_page_card</item>
+    </style>
+
+    <style name="AboutPage.CardContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:paddingBottom">8dp</item>
+        <item name="android:autoLink">web</item>
+        <item name="android:textColorLink">@android:color/black</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/about_page_card_text_color</item>
+    </style>
+
+    <style name="AboutPage.ContributorAvatar">
+        <item name="android:layout_width">@dimen/about_page_avatar_size</item>
+        <item name="android:layout_height">@dimen/about_page_avatar_size</item>
+        <item name="android:layout_marginRight">16dp</item>
+    </style>
+
+    <style name="AboutPage.ContributorName">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/about_page_name_color</item>
+    </style>
+
+    <style name="AboutPage.ContributorDesc">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/about_page_desc_color</item>
+    </style>
+
+    <style name="AboutPage.LicenseContent">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/about_page_license_content</item>
+    </style>
+
+    <style name="AboutPage.LicenseHint">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">@dimen/about_page_license_text_size</item>
+        <item name="android:textColor">@color/about_page_hint</item>
+    </style>
+</resources>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="about_page_card_background">#ffffff</color>
+    <color name="about_page_card_shadow">#10000000</color>
+    <color name="about_page_background">#f1f1f1</color>
+    <color name="about_page_category_text_color">#757575</color>
+    <color name="about_page_card_text_color">#424242</color>
+    <color name="about_page_selected">#44000000</color>
+    <color name="about_page_line">#9e9e9e</color>
+    <color name="about_page_name_color">#424242</color>
+    <color name="about_page_desc_color">#757575</color>
+    <color name="about_page_license_content">#424242</color>
+    <color name="about_page_hint">#757575</color>
+</resources>
