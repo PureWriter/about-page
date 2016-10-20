@@ -1,4 +1,6 @@
 apply plugin: 'com.android.library'
+apply from: './gradle-mvn-push.gradle'
+apply plugin: 'jacoco'
 
 android {
     compileSdkVersion 24
@@ -8,9 +10,8 @@ android {
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 24
-        versionCode 1
-        versionName "0.8.9"
-
+        versionCode 2
+        versionName "0.9.9"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -31,5 +32,4 @@ dependencies {
     compile 'com.android.support:design:24.2.1'
     testCompile 'junit:junit:4.12'
     provided 'me.drakeet.multitype:multitype:2.2.0-beta1'
-
 }
