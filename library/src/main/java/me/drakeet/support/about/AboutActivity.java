@@ -1,18 +1,18 @@
 package me.drakeet.support.about;
 
 import android.os.Bundle;
+import android.support.annotation.ColorInt;
+import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.TextView;
-import me.drakeet.multitype.Item;
 import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;
 
@@ -21,11 +21,12 @@ import me.drakeet.multitype.MultiTypeAdapter;
  */
 public abstract class AboutActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Toolbar toolbar;
-    private CollapsingToolbarLayout collapsingToolbar;
+    protected Toolbar toolbar;
+    protected CollapsingToolbarLayout collapsingToolbar;
 
     protected Items items;
-    private MultiTypeAdapter adapter;
+    protected MultiTypeAdapter adapter;
+    protected TextView slogan, version;
 
 
     protected abstract void onCreateHeader(ImageView icon, TextView slogan, TextView version);
@@ -46,11 +47,11 @@ public abstract class AboutActivity extends AppCompatActivity implements View.On
         setContentView(R.layout.about_page_main_activity);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         ImageView icon = (ImageView) findViewById(R.id.icon);
-        TextView slogan = (TextView) findViewById(R.id.slogan);
-        TextView version = (TextView) findViewById(R.id.version);
+        slogan = (TextView) findViewById(R.id.slogan);
+        version = (TextView) findViewById(R.id.version);
+        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         onCreateHeader(icon, slogan, version);
 
-        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
         final CharSequence title = onCreateTitle();
         if (title != null) {
             collapsingToolbar.setTitle(title);
@@ -58,7 +59,7 @@ public abstract class AboutActivity extends AppCompatActivity implements View.On
 
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
         onSetupRecyclerView(recyclerView);
     }
@@ -74,6 +75,47 @@ public abstract class AboutActivity extends AppCompatActivity implements View.On
         adapter.register(Contributor.class, new ContributorViewProvider());
         adapter.register(License.class, new LicenseViewProvider());
         recyclerView.setAdapter(adapter);
+    }
+
+
+    /**
+     * Set the header view background to a given resource and replace the default value
+     * ?attr/colorPrimary.
+     * The resource should refer to a Drawable object or 0 to remove the background.
+     *
+     * @param resId The identifier of the resource.
+     */
+    public void setHeaderBackgroundResource(@DrawableRes int resId) {
+        if (collapsingToolbar == null) {
+            collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        }
+        collapsingToolbar.setContentScrimResource(resId);
+        collapsingToolbar.setBackgroundResource(resId);
+    }
+
+
+    public void setHeaderContentColor(@ColorInt int color) {
+        collapsingToolbar.setCollapsedTitleTextColor(color);
+        slogan.setTextColor(color);
+        version.setTextColor(color);
+    }
+
+
+    /**
+     * Set the icon to use for the toolbar's navigation button.
+     *
+     * @param resId Resource ID of a drawable to set
+     */
+    public void setNavigationIcon(@DrawableRes int resId) {
+        toolbar.setNavigationIcon(resId);
+    }
+
+
+    @Override public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == android.R.id.home) {
+            onBackPressed();
+        }
+        return super.onOptionsItemSelected(menuItem);
     }
 
 

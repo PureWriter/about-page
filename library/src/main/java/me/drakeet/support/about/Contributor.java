@@ -1,14 +1,12 @@
 package me.drakeet.support.about;
 
 import android.support.annotation.DrawableRes;
-import android.support.annotation.IntegerRes;
 import android.support.annotation.NonNull;
-import me.drakeet.multitype.Item;
 
 /**
  * @author drakeet
  */
-public class Contributor implements Item {
+public class Contributor {
 
     @DrawableRes public final int avatarResId;
     @NonNull public final String name;

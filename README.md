@@ -15,8 +15,8 @@ In your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.support:about:0.9.9'
-    compile 'me.drakeet.multitype:multitype:2.2.0-beta1'
+    compile 'me.drakeet.support:about:1.0.0'
+    compile 'me.drakeet.multitype:multitype:2.3.0'
 }
 ```
 
@@ -27,6 +27,8 @@ public class MainActivity extends AboutActivity {
 
     @SuppressLint("SetTextI18n") @Override
     protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
+        setHeaderContentColor(getResources().getColor(R.color.textColorPrimary));
+        setNavigationIcon(R.drawable.ic_close_black_24dp);
         icon.setImageResource(R.mipmap.ic_launcher);
         slogan.setText("About Page By drakeet");
         version.setText("v" + BuildConfig.VERSION_NAME);
@@ -55,6 +57,25 @@ public class MainActivity extends AboutActivity {
         ...
     }
 }
+```
+
+### Custom style/theme
+
+```xml
+<style name="AppTheme.About" parent="Theme.AppCompat.Light.DarkActionBar">
+    <item name="windowActionBar">false</item>
+    <item name="windowNoTitle">true</item>
+    <item name="colorPrimary">@color/colorPrimary</item>
+    <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    <item name="colorAccent">@android:color/black</item>
+    <item name="android:textColorSecondary">@android:color/black</item>
+</style>
+```
+
+```java
+setHeaderBackgroundResource(@DrawableRes int resId);
+setHeaderContentColor(@ColorInt int color);
+setNavigationIcon(@DrawableRes int resId);
 ```
 
 ### TODO

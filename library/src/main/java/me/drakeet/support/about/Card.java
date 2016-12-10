@@ -1,12 +1,11 @@
 package me.drakeet.support.about;
 
 import android.support.annotation.NonNull;
-import me.drakeet.multitype.Item;
 
 /**
  * @author drakeet
  */
-public class Card implements Item {
+public class Card {
 
     @NonNull public final String content;
     @NonNull public final String action;

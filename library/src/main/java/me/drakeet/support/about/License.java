@@ -1,15 +1,15 @@
 package me.drakeet.support.about;
 
 import android.support.annotation.NonNull;
-import me.drakeet.multitype.Item;
 
 /**
  * @author drakeet
  */
-public class License implements Item {
+public class License {
 
     public static final String MIT = "MIT License";
     public static final String APACHE_2 = "Apache Software License 2.0";
+    public static final String GPL_V3 = "GNU general public license Version 3";
 
     public String name;
     public String author;
