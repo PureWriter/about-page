@@ -19,7 +19,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
 /**
  * @author drakeet
  */
-public abstract class AboutActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class AbsAboutActivity extends AppCompatActivity implements View.OnClickListener {
 
     protected Toolbar toolbar;
     protected CollapsingToolbarLayout collapsingToolbar;
@@ -66,15 +66,16 @@ public abstract class AboutActivity extends AppCompatActivity implements View.On
 
 
     private void onSetupRecyclerView(RecyclerView recyclerView) {
-        items = new Items();
-        onItemsCreated(items);
-        adapter = new MultiTypeAdapter(items);
+        adapter = new MultiTypeAdapter();
         adapter.register(Category.class, new CategoryViewProvider());
         adapter.register(Card.class, new CardViewProvider(this));
         adapter.register(Line.class, new LineViewProvider());
         adapter.register(Contributor.class, new ContributorViewProvider());
         adapter.register(License.class, new LicenseViewProvider());
         recyclerView.setAdapter(adapter);
+        items = new Items();
+        onItemsCreated(items);
+        adapter.setItems(items);
     }
 
 

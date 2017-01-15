@@ -3,20 +3,18 @@ package me.drakeet.support.about.sample;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import me.drakeet.multitype.Items;
-import me.drakeet.support.about.AboutActivity;
+import me.drakeet.support.about.AbsAboutActivity;
 import me.drakeet.support.about.Card;
 import me.drakeet.support.about.Category;
 import me.drakeet.support.about.Contributor;
 import me.drakeet.support.about.License;
 import me.drakeet.support.about.Line;
 
-public class MainActivity extends AboutActivity {
+public class MainActivity extends AbsAboutActivity {
 
     @SuppressLint("SetTextI18n") @Override
     protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
