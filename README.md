@@ -23,7 +23,7 @@ dependencies {
 ### Usage
 
 ```java
-public class MainActivity extends AboutActivity {
+public class AboutActivity extends AbsAboutActivity {
 
     @SuppressLint("SetTextI18n") @Override
     protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
