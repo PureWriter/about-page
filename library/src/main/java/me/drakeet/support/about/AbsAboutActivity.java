@@ -72,10 +72,10 @@ public abstract class AbsAboutActivity extends AppCompatActivity implements View
         adapter.register(Line.class, new LineViewProvider());
         adapter.register(Contributor.class, new ContributorViewProvider());
         adapter.register(License.class, new LicenseViewProvider());
-        recyclerView.setAdapter(adapter);
         items = new Items();
         onItemsCreated(items);
         adapter.setItems(items);
+        recyclerView.setAdapter(adapter);
     }
 
 
