@@ -14,6 +14,9 @@ import me.drakeet.support.about.Contributor;
 import me.drakeet.support.about.License;
 import me.drakeet.support.about.Line;
 
+/**
+ * @author drakeet
+ */
 public class MainActivity extends AbsAboutActivity {
 
     @SuppressLint("SetTextI18n") @Override
@@ -23,24 +26,30 @@ public class MainActivity extends AbsAboutActivity {
         version.setText("v" + BuildConfig.VERSION_NAME);
     }
 
+    /* @formatter:off */
+
+    @SuppressWarnings("SpellCheckingInspection")
     @Override protected void onItemsCreated(@NonNull Items items) {
         items.add(new Category("介绍与帮助"));
         items.add(new Card(getString(R.string.card_content), "分享"));
         items.add(new Line());
+
         items.add(new Category("Developers"));
-        items.add(new Contributor(R.drawable.avatar_drakeet, "drakeet", "Developer & designer"));
+        items.add(new Contributor(R.drawable.avatar_drakeet, "drakeet", "Developer & designer", "http://weibo.com/drak11t"));
+        items.add(new Contributor(R.drawable.avatar_drakeet, "黑猫酱", "Developer", "https://drakeet.me"));
         items.add(new Contributor(R.drawable.avatar_drakeet, "小艾大人", "Developer"));
         items.add(new Line());
+
         items.add(new Category("Open Source Licenses"));
-        items.add(new License("MultiType", "drakeet", License.APACHE_2,
-            "https://github.com/drakeet/MultiType"));
-        items.add(new License("about-page", "drakeet", License.APACHE_2,
-            "https://github.com/drakeet/about-page"));
+        items.add(new License("MultiType", "drakeet", License.APACHE_2, "https://github.com/drakeet/MultiType"));
+        items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
     }
+
 
     @Override protected void onActionClick(View action) {
         onClickShare();
     }
+
 
     public void onClickShare() {
         Intent intent = new Intent(Intent.ACTION_SEND);
