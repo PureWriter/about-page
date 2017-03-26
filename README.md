@@ -15,8 +15,8 @@ In your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.support:about:1.0.6'
-    compile 'me.drakeet.multitype:multitype:2.4.1'
+    compile 'me.drakeet.support:about:1.1.0'
+    compile 'me.drakeet.multitype:multitype:2.5.0-beta2'
 }
 ```
 
@@ -34,7 +34,8 @@ public class AboutActivity extends AbsAboutActivity {
         version.setText("v" + BuildConfig.VERSION_NAME);
     }
 
-    @Override protected void onItemsCreated(@NonNull Items items) {
+    @Override 
+    protected void onItemsCreated(@NonNull Items items) {
         items.add(new Category("介绍与帮助"));
         items.add(new Card(getString(R.string.card_content), "分享"));
 
@@ -52,7 +53,8 @@ public class AboutActivity extends AbsAboutActivity {
         items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
     }
 
-    @Override protected void onActionClick(View action) {
+    @Override 
+    protected void onActionClick(View action) {
         ...
     }
 }

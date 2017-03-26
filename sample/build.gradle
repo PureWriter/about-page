@@ -7,8 +7,8 @@ android {
         applicationId "me.drakeet.support.about.sample"
         minSdkVersion 9
         targetSdkVersion 25
-        versionCode 6
-        versionName "1.0.6"
+        versionCode 20
+        versionName "1.1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
@@ -20,8 +20,8 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:25.1.0'
+    compile 'com.android.support:appcompat-v7:25.3.0'
     testCompile 'junit:junit:4.12'
-    provided 'me.drakeet.multitype:multitype:2.4.1'
+    provided 'me.drakeet.multitype:multitype:2.5.0-beta2'
     compile project(':library')
 }

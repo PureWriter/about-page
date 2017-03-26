@@ -6,18 +6,17 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import me.drakeet.multitype.ItemViewProvider;
+import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author drakeet
  */
-public class CardViewProvider
-    extends ItemViewProvider<Card, CardViewProvider.ViewHolder> {
+public class CardViewBinder extends ItemViewBinder<Card, CardViewBinder.ViewHolder> {
 
     private final View.OnClickListener onActionClickListener;
 
 
-    public CardViewProvider(View.OnClickListener onActionClickListener) {
+    public CardViewBinder(View.OnClickListener onActionClickListener) {
         this.onActionClickListener = onActionClickListener;
     }
 
@@ -31,8 +30,7 @@ public class CardViewProvider
 
 
     @Override
-    protected void onBindViewHolder(
-        @NonNull ViewHolder holder, @NonNull Card card) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Card card) {
         holder.content.setText(card.content);
         holder.action.setText(card.action);
     }
@@ -42,6 +40,7 @@ public class CardViewProvider
 
         TextView content;
         TextView action;
+
 
         ViewHolder(View itemView) {
             super(itemView);
