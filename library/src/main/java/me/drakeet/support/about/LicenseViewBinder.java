@@ -5,13 +5,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import me.drakeet.multitype.ItemViewProvider;
+import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author drakeet
  */
-public class LicenseViewProvider
-    extends ItemViewProvider<License, LicenseViewProvider.ViewHolder> {
+public class LicenseViewBinder
+    extends ItemViewBinder<License, LicenseViewBinder.ViewHolder> {
 
     @NonNull @Override
     protected ViewHolder onCreateViewHolder(

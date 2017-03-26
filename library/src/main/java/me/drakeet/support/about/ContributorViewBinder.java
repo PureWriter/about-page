@@ -6,13 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import me.drakeet.multitype.ItemViewProvider;
+import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author drakeet
  */
-public class ContributorViewProvider
-    extends ItemViewProvider<Contributor, ContributorViewProvider.ViewHolder> {
+public class ContributorViewBinder
+    extends ItemViewBinder<Contributor, ContributorViewBinder.ViewHolder> {
 
     @NonNull @Override
     protected ViewHolder onCreateViewHolder(
@@ -23,8 +23,7 @@ public class ContributorViewProvider
 
 
     @Override
-    protected void onBindViewHolder(
-        @NonNull ViewHolder holder, @NonNull Contributor contributor) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Contributor contributor) {
         holder.avatar.setImageResource(contributor.avatarResId);
         holder.name.setText(contributor.name);
         holder.desc.setText(contributor.desc);

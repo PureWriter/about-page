@@ -5,13 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import me.drakeet.multitype.ItemViewProvider;
+import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author drakeet
  */
-public class LineViewProvider
-    extends ItemViewProvider<Line, LineViewProvider.ViewHolder> {
+public class LineViewBinder extends ItemViewBinder<Line, LineViewBinder.ViewHolder> {
 
     @NonNull @Override
     protected ViewHolder onCreateViewHolder(
@@ -22,8 +21,7 @@ public class LineViewProvider
 
 
     @Override
-    protected void onBindViewHolder(
-        @NonNull ViewHolder holder, @NonNull Line data) {}
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Line data) {}
 
 
     static class ViewHolder extends RecyclerView.ViewHolder {

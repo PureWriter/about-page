@@ -19,17 +19,17 @@ import me.drakeet.support.about.Line;
  */
 public class MainActivity extends AbsAboutActivity {
 
-    @SuppressLint("SetTextI18n") @Override
+    @Override @SuppressLint("SetTextI18n")
     protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
         icon.setImageResource(R.mipmap.ic_launcher);
         slogan.setText("About Page By drakeet");
         version.setText("v" + BuildConfig.VERSION_NAME);
     }
 
-    /* @formatter:off */
 
-    @SuppressWarnings("SpellCheckingInspection")
-    @Override protected void onItemsCreated(@NonNull Items items) {
+    @Override @SuppressWarnings("SpellCheckingInspection")
+    protected void onItemsCreated(@NonNull Items items) {
+        /* @formatter:off */
         items.add(new Category("介绍与帮助"));
         items.add(new Card(getString(R.string.card_content), "分享"));
         items.add(new Line());
@@ -43,10 +43,12 @@ public class MainActivity extends AbsAboutActivity {
         items.add(new Category("Open Source Licenses"));
         items.add(new License("MultiType", "drakeet", License.APACHE_2, "https://github.com/drakeet/MultiType"));
         items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
+        /* @formatter:on */
     }
 
 
-    @Override protected void onActionClick(View action) {
+    @Override
+    protected void onActionClick(View action) {
         onClickShare();
     }
 

@@ -33,7 +33,8 @@ public abstract class AbsAboutActivity extends AppCompatActivity implements View
     protected abstract void onItemsCreated(@NonNull Items items);
 
 
-    @Nullable protected CharSequence onCreateTitle() {
+    @Nullable
+    protected CharSequence onCreateTitle() {
         return null;
     }
 
@@ -67,11 +68,11 @@ public abstract class AbsAboutActivity extends AppCompatActivity implements View
 
     private void onSetupRecyclerView(RecyclerView recyclerView) {
         adapter = new MultiTypeAdapter();
-        adapter.register(Category.class, new CategoryViewProvider());
-        adapter.register(Card.class, new CardViewProvider(this));
-        adapter.register(Line.class, new LineViewProvider());
-        adapter.register(Contributor.class, new ContributorViewProvider());
-        adapter.register(License.class, new LicenseViewProvider());
+        adapter.register(Category.class, new CategoryViewBinder());
+        adapter.register(Card.class, new CardViewBinder(this));
+        adapter.register(Line.class, new LineViewBinder());
+        adapter.register(Contributor.class, new ContributorViewBinder());
+        adapter.register(License.class, new LicenseViewBinder());
         items = new Items();
         onItemsCreated(items);
         adapter.setItems(items);
@@ -112,7 +113,8 @@ public abstract class AbsAboutActivity extends AppCompatActivity implements View
     }
 
 
-    @Override public boolean onOptionsItemSelected(MenuItem menuItem) {
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
         if (menuItem.getItemId() == android.R.id.home) {
             onBackPressed();
         }
@@ -120,12 +122,14 @@ public abstract class AbsAboutActivity extends AppCompatActivity implements View
     }
 
 
-    @Override public void setTitle(CharSequence title) {
+    @Override
+    public void setTitle(CharSequence title) {
         collapsingToolbar.setTitle(title);
     }
 
 
-    @Override public void onClick(View v) {
+    @Override
+    public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.action) {
             onActionClick(v);
