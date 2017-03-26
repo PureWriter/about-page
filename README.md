@@ -15,7 +15,7 @@ In your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.support:about:1.0.2'
+    compile 'me.drakeet.support:about:1.0.6'
     compile 'me.drakeet.multitype:multitype:2.4.1'
 }
 ```
@@ -41,16 +41,15 @@ public class AboutActivity extends AbsAboutActivity {
         items.add(new Line());
 
         items.add(new Category("Developers"));
-        items.add(new Contributor(R.drawable.avatar_drakeet, "drakeet", "Developer & designer"));
+        items.add(new Contributor(R.drawable.avatar_drakeet, "drakeet", "Developer & designer", "http://weibo.com/drak11t"));
+        items.add(new Contributor(R.drawable.avatar_drakeet, "黑猫酱", "Developer", "https://drakeet.me"));
         items.add(new Contributor(R.drawable.avatar_drakeet, "小艾大人", "Developer"));
 
         items.add(new Line());
 
         items.add(new Category("Open Source Licenses"));
-        items.add(new License("MultiType", "drakeet", License.APACHE_2,
-            "https://github.com/drakeet/MultiType"));
-        items.add(new License("about-page", "drakeet", License.APACHE_2,
-            "https://github.com/drakeet/about-page"));
+        items.add(new License("MultiType", "drakeet", License.APACHE_2, "https://github.com/drakeet/MultiType"));
+        items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
     }
 
     @Override protected void onActionClick(View action) {
