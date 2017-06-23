@@ -15,8 +15,8 @@ In your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.support:about:1.2.0'
-    compile 'me.drakeet.multitype:multitype:3.0.0'
+    compile 'me.drakeet.support:about:1.2.1'
+    compile 'me.drakeet.multitype:multitype:3.1.0'
 }
 ```
 
@@ -25,7 +25,7 @@ dependencies {
 ```java
 public class AboutActivity extends AbsAboutActivity {
 
-    @SuppressLint("SetTextI18n") @Override
+    @Override
     protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
         setHeaderContentColor(getResources().getColor(R.color.textColorPrimary));
         setNavigationIcon(R.drawable.ic_close_black_24dp);

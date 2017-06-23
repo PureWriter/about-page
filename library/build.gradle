@@ -4,14 +4,14 @@ apply plugin: 'jacoco'
 
 android {
     compileSdkVersion 25
-    buildToolsVersion "25.0.2"
+    buildToolsVersion "25.0.3"
     resourcePrefix "about_page"
 
     defaultConfig {
         minSdkVersion 9
         targetSdkVersion 25
-        versionCode 30
-        versionName "1.2.0"
+        versionCode 31
+        versionName "1.2.1"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
@@ -30,6 +30,6 @@ dependencies {
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
-    compile 'me.drakeet.multitype:multitype:3.0.0'
+    compile 'me.drakeet.multitype:multitype:3.1.0'
     testCompile 'junit:junit:4.12'
 }
