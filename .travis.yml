@@ -24,6 +24,7 @@ before_install:
   - echo yes | android update sdk --all --filter build-tools-$ANDROID_BUILD_TOOLS_VERSION --no-ui --force
 
 before_script:
+  - chmod +x gradlew
   - echo no | android create avd --force -n test -t android-22 --abi $ANDROID_ABI
   - emulator -avd test -no-window &
   - android-wait-for-emulator
