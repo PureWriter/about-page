@@ -15,7 +15,7 @@ In your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.support:about:1.2.1'
+    compile 'me.drakeet.support:about:1.3.0'
     compile 'me.drakeet.multitype:multitype:3.3.0'
 }
 ```
@@ -26,36 +26,28 @@ dependencies {
 public class AboutActivity extends AbsAboutActivity {
 
     @Override
-    protected void onCreateHeader(ImageView icon, TextView slogan, TextView version) {
-        setHeaderContentColor(getResources().getColor(R.color.textColorPrimary));
-        setNavigationIcon(R.drawable.ic_close_black_24dp);
+    protected void onCreateHeader(@NonNull ImageView icon, @NonNull TextView slogan, @NonNull TextView version) {
         icon.setImageResource(R.mipmap.ic_launcher);
         slogan.setText("About Page By drakeet");
         version.setText("v" + BuildConfig.VERSION_NAME);
     }
 
-    @Override 
+
+    @Override
     protected void onItemsCreated(@NonNull Items items) {
         items.add(new Category("介绍与帮助"));
-        items.add(new Card(getString(R.string.card_content), "分享"));
-
+        items.add(new Card(getString(R.string.card_content)));
         items.add(new Line());
 
         items.add(new Category("Developers"));
         items.add(new Contributor(R.drawable.avatar_drakeet, "drakeet", "Developer & designer", "http://weibo.com/drak11t"));
         items.add(new Contributor(R.drawable.avatar_drakeet, "黑猫酱", "Developer", "https://drakeet.me"));
         items.add(new Contributor(R.drawable.avatar_drakeet, "小艾大人", "Developer"));
-
         items.add(new Line());
 
         items.add(new Category("Open Source Licenses"));
         items.add(new License("MultiType", "drakeet", License.APACHE_2, "https://github.com/drakeet/MultiType"));
         items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
-    }
-
-    @Override 
-    protected void onActionClick(View action) {
-        ...
     }
 }
 ```
@@ -75,7 +67,7 @@ public class AboutActivity extends AbsAboutActivity {
 
 ```java
 setHeaderBackgroundResource(@DrawableRes int resId);
-setHeaderContentColor(@ColorInt int color);
+setHeaderTextColor(@ColorInt int color);
 setNavigationIcon(@DrawableRes int resId);
 ```
 
