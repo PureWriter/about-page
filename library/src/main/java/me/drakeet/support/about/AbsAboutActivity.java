@@ -4,13 +4,12 @@ import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
-import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import me.drakeet.multitype.Items;
@@ -19,30 +18,24 @@ import me.drakeet.multitype.MultiTypeAdapter;
 /**
  * @author drakeet
  */
-public abstract class AbsAboutActivity extends AppCompatActivity implements View.OnClickListener {
+public abstract class AbsAboutActivity extends AppCompatActivity {
 
-    protected Toolbar toolbar;
-    protected CollapsingToolbarLayout collapsingToolbar;
+    private Toolbar toolbar;
+    private CollapsingToolbarLayout collapsingToolbar;
 
-    protected Items items;
-    protected MultiTypeAdapter adapter;
-    protected TextView slogan, version;
+    private Items items;
+    private MultiTypeAdapter adapter;
+    private TextView slogan, version;
 
 
-    protected abstract void onCreateHeader(ImageView icon, TextView slogan, TextView version);
+    protected abstract void onCreateHeader(@NonNull ImageView icon, @NonNull TextView slogan, @NonNull TextView version);
     protected abstract void onItemsCreated(@NonNull Items items);
 
 
-    @Nullable
-    protected CharSequence onCreateTitle() {
-        return null;
-    }
+    protected void onTitleViewCreated(@NonNull CollapsingToolbarLayout collapsingToolbar) {}
 
 
-    protected void onActionClick(View action) {}
-
-
-    @SuppressWarnings("ConstantConditions") @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_page_main_activity);
@@ -51,16 +44,15 @@ public abstract class AbsAboutActivity extends AppCompatActivity implements View
         slogan = (TextView) findViewById(R.id.slogan);
         version = (TextView) findViewById(R.id.version);
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        onTitleViewCreated(collapsingToolbar);
         onCreateHeader(icon, slogan, version);
 
-        final CharSequence title = onCreateTitle();
-        if (title != null) {
-            collapsingToolbar.setTitle(title);
-        }
-
         setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+        }
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
         onSetupRecyclerView(recyclerView);
     }
@@ -69,7 +61,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity implements View
     private void onSetupRecyclerView(RecyclerView recyclerView) {
         adapter = new MultiTypeAdapter();
         adapter.register(Category.class, new CategoryViewBinder());
-        adapter.register(Card.class, new CardViewBinder(this));
+        adapter.register(Card.class, new CardViewBinder());
         adapter.register(Line.class, new LineViewBinder());
         adapter.register(Contributor.class, new ContributorViewBinder());
         adapter.register(License.class, new LicenseViewBinder());
@@ -96,7 +88,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity implements View
     }
 
 
-    public void setHeaderContentColor(@ColorInt int color) {
+    public void setHeaderTextColor(@ColorInt int color) {
         collapsingToolbar.setCollapsedTitleTextColor(color);
         slogan.setTextColor(color);
         version.setTextColor(color);
@@ -123,16 +115,37 @@ public abstract class AbsAboutActivity extends AppCompatActivity implements View
 
 
     @Override
-    public void setTitle(CharSequence title) {
+    public void setTitle(@NonNull CharSequence title) {
         collapsingToolbar.setTitle(title);
     }
 
 
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        if (id == R.id.action) {
-            onActionClick(v);
-        }
+    public Toolbar toolbar() {
+        return toolbar;
+    }
+
+
+    public CollapsingToolbarLayout collapsingToolbar() {
+        return collapsingToolbar;
+    }
+
+
+    public Items items() {
+        return items;
+    }
+
+
+    public MultiTypeAdapter adapter() {
+        return adapter;
+    }
+
+
+    public TextView sloganTextView() {
+        return slogan;
+    }
+
+
+    public TextView versionTextView() {
+        return version;
     }
 }

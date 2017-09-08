@@ -24,9 +24,9 @@ public class LineViewBinder extends ItemViewBinder<Line, LineViewBinder.ViewHold
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Line data) {}
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        ViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
         }
     }

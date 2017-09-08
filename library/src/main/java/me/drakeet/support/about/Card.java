@@ -7,12 +7,10 @@ import android.support.annotation.NonNull;
  */
 public class Card {
 
-    @NonNull public final String content;
-    @NonNull public final String action;
+    public @NonNull final String content;
 
 
-    public Card(@NonNull String content, @NonNull String action) {
+    public Card(@NonNull String content) {
         this.content = content;
-        this.action = action;
     }
 }

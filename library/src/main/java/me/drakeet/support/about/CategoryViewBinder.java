@@ -27,12 +27,12 @@ public class CategoryViewBinder extends ItemViewBinder<Category, CategoryViewBin
     }
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView category;
+        public TextView category;
 
 
-        ViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             category = (TextView) itemView.findViewById(R.id.category);
         }
