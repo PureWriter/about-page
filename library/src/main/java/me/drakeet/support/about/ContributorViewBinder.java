@@ -31,14 +31,14 @@ public class ContributorViewBinder
     }
 
 
-    static class ViewHolder extends ClickableViewHolder {
+    public static class ViewHolder extends ClickableViewHolder {
 
-        ImageView avatar;
-        TextView name;
-        TextView desc;
+        public ImageView avatar;
+        public TextView name;
+        public TextView desc;
 
 
-        ViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             avatar = (ImageView) itemView.findViewById(R.id.avatar);
             name = (TextView) itemView.findViewById(R.id.name);

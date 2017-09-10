@@ -10,8 +10,7 @@ import me.drakeet.multitype.ItemViewBinder;
 /**
  * @author drakeet
  */
-public class LicenseViewBinder
-    extends ItemViewBinder<License, LicenseViewBinder.ViewHolder> {
+public class LicenseViewBinder extends ItemViewBinder<License, LicenseViewBinder.ViewHolder> {
 
     @NonNull @Override
     protected ViewHolder onCreateViewHolder(
@@ -30,13 +29,13 @@ public class LicenseViewBinder
     }
 
 
-    static class ViewHolder extends ClickableViewHolder {
+    public static class ViewHolder extends ClickableViewHolder {
 
-        TextView content;
-        TextView hint;
+        public TextView content;
+        public TextView hint;
 
 
-        ViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             content = (TextView) itemView.findViewById(R.id.content);
             hint = (TextView) itemView.findViewById(R.id.hint);
