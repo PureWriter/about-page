@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <declare-styleable name="AbsAboutActivity"
+        tools:ignore="ResourceName">
+
+        <attr name="aboutPageHeaderBackground"
+            format="reference|color"/>
+
+        <attr name="aboutPageHeaderContentScrim"
+            format="reference|color"/>
+
+        <attr name="aboutPageHeaderTextColor"
+            format="color"/>
+
+        <attr name="aboutPageNavigationIcon"
+            format="reference"/>
+
+    </declare-styleable>
+
+</resources>

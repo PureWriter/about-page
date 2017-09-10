@@ -15,7 +15,7 @@ In your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.support:about:1.3.0'
+    compile 'me.drakeet.support:about:1.4.0'
     compile 'me.drakeet.multitype:multitype:3.3.0'
 }
 ```
@@ -61,14 +61,13 @@ public class AboutActivity extends AbsAboutActivity {
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@android:color/black</item>
-    <item name="android:textColorSecondary">@android:color/black</item>
+    
+    <!--optional-->
+    <item name="aboutPageHeaderBackground">reference|color</item>
+    <item name="aboutPageHeaderContentScrim">reference|color</item>
+    <item name="aboutPageHeaderTextColor">color</item>
+    <item name="aboutPageNavigationIcon">reference</item>
 </style>
-```
-
-```java
-setHeaderBackgroundResource(@DrawableRes int resId);
-setHeaderTextColor(@ColorInt int color);
-setNavigationIcon(@DrawableRes int resId);
 ```
 
 ### TODO

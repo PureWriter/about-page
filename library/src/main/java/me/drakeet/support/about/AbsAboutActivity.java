@@ -1,16 +1,21 @@
 package me.drakeet.support.about;
 
+import android.content.res.TypedArray;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewCompat;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;
@@ -22,6 +27,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private CollapsingToolbarLayout collapsingToolbar;
+    private LinearLayout headerContentLayout;
 
     private Items items;
     private MultiTypeAdapter adapter;
@@ -44,6 +50,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
         slogan = (TextView) findViewById(R.id.slogan);
         version = (TextView) findViewById(R.id.version);
         collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
+        headerContentLayout = (LinearLayout) findViewById(R.id.header_content_layout);
         onTitleViewCreated(collapsingToolbar);
         onCreateHeader(icon, slogan, version);
 
@@ -53,8 +60,32 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
             actionBar.setDisplayHomeAsUpEnabled(true);
             actionBar.setDisplayShowHomeEnabled(true);
         }
+        onApplyPresetAttrs();
         RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
         onSetupRecyclerView(recyclerView);
+    }
+
+
+    private void onApplyPresetAttrs() {
+        final TypedArray a = obtainStyledAttributes(R.styleable.AbsAboutActivity);
+        Drawable headerBackground = a.getDrawable(R.styleable.AbsAboutActivity_aboutPageHeaderBackground);
+        if (headerBackground != null) {
+            setHeaderBackground(headerBackground);
+        }
+        Drawable headerContentScrim = a.getDrawable(R.styleable.AbsAboutActivity_aboutPageHeaderContentScrim);
+        if (headerContentScrim != null) {
+            setHeaderContentScrim(headerContentScrim);
+        }
+        @ColorInt
+        int headerTextColor = a.getColor(R.styleable.AbsAboutActivity_aboutPageHeaderTextColor, -1);
+        if (headerTextColor != -1) {
+            setHeaderTextColor(headerTextColor);
+        }
+        Drawable navigationIcon = a.getDrawable(R.styleable.AbsAboutActivity_aboutPageNavigationIcon);
+        if (navigationIcon != null) {
+            setNavigationIcon(navigationIcon);
+        }
+        a.recycle();
     }
 
 
@@ -73,18 +104,39 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
 
 
     /**
-     * Set the header view background to a given resource and replace the default value
-     * ?attr/colorPrimary.
-     * The resource should refer to a Drawable object or 0 to remove the background.
+     * Use {@link #setHeaderBackground(int)} instead.
      *
-     * @param resId The identifier of the resource.
+     * @param resId The resource id of header background
      */
+    @Deprecated
     public void setHeaderBackgroundResource(@DrawableRes int resId) {
-        if (collapsingToolbar == null) {
-            collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        }
-        collapsingToolbar.setContentScrimResource(resId);
-        collapsingToolbar.setBackgroundResource(resId);
+        setHeaderBackground(resId);
+    }
+
+
+    private void setHeaderBackground(@DrawableRes int resId) {
+        setHeaderBackground(ContextCompat.getDrawable(this, resId));
+    }
+
+
+    private void setHeaderBackground(@NonNull Drawable drawable) {
+        ViewCompat.setBackground(headerContentLayout, drawable);
+    }
+
+
+    /**
+     * Set the drawable to use for the content scrim from resources. Providing null will disable
+     * the scrim functionality.
+     *
+     * @param drawable the drawable to display
+     */
+    public void setHeaderContentScrim(@NonNull Drawable drawable) {
+        collapsingToolbar.setContentScrim(drawable);
+    }
+
+
+    public void setHeaderContentScrim(@DrawableRes int resId) {
+        setHeaderContentScrim(ContextCompat.getDrawable(this, resId));
     }
 
 
@@ -102,6 +154,11 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
      */
     public void setNavigationIcon(@DrawableRes int resId) {
         toolbar.setNavigationIcon(resId);
+    }
+
+
+    public void setNavigationIcon(@NonNull Drawable drawable) {
+        toolbar.setNavigationIcon(drawable);
     }
 
 
