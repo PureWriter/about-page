@@ -7,8 +7,8 @@ android {
         applicationId "me.drakeet.support.about.sample"
         minSdkVersion 14
         targetSdkVersion 25
-        versionCode 50
-        versionName "1.4.0"
+        versionCode 51
+        versionName "1.4.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
