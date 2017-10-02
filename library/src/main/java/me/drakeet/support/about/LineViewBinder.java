@@ -13,8 +13,7 @@ import me.drakeet.multitype.ItemViewBinder;
 public class LineViewBinder extends ItemViewBinder<Line, LineViewBinder.ViewHolder> {
 
     @NonNull @Override
-    protected ViewHolder onCreateViewHolder(
-        @NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View root = inflater.inflate(R.layout.about_page_item_line, parent, false);
         return new ViewHolder(root);
     }

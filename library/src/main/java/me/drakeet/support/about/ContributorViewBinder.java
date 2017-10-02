@@ -15,8 +15,7 @@ public class ContributorViewBinder
     extends ItemViewBinder<Contributor, ContributorViewBinder.ViewHolder> {
 
     @NonNull @Override
-    protected ViewHolder onCreateViewHolder(
-        @NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View root = inflater.inflate(R.layout.about_page_item_contributor, parent, false);
         return new ViewHolder(root);
     }

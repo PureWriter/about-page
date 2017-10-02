@@ -9,10 +9,10 @@ import android.support.annotation.Nullable;
  */
 public class Contributor {
 
-    @DrawableRes public final int avatarResId;
-    @NonNull public final String name;
-    @NonNull public final String desc;
-    @Nullable public String url;
+    public @DrawableRes  final int avatarResId;
+    public @NonNull final String name;
+    public @NonNull final String desc;
+    public @Nullable String url;
 
 
     public Contributor(@DrawableRes int avatarResId, @NonNull String name, @NonNull String desc) {

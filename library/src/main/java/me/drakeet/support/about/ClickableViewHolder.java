@@ -13,7 +13,7 @@ import static android.net.Uri.parse;
  */
 public class ClickableViewHolder extends RecyclerView.ViewHolder {
 
-    @Nullable private String url;
+    private @Nullable String url;
 
 
     public ClickableViewHolder(View itemView) {

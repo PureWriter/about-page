@@ -20,8 +20,7 @@ public class License {
     public License() {}
 
 
-    public License(
-        @NonNull String name, @NonNull String author, @NonNull String type, @NonNull String url) {
+    public License(@NonNull String name, @NonNull String author, @NonNull String type, @NonNull String url) {
         this.name = name;
         this.author = author;
         this.type = type;

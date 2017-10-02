@@ -7,8 +7,10 @@ import android.support.annotation.NonNull;
  */
 public class Category {
 
-    @NonNull public final String value;
+    public @NonNull final String value;
 
 
-    public Category(@NonNull String value) {this.value = value;}
+    public Category(@NonNull String value) {
+        this.value = value;
+    }
 }

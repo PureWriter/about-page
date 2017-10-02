@@ -13,16 +13,14 @@ import me.drakeet.multitype.ItemViewBinder;
 public class LicenseViewBinder extends ItemViewBinder<License, LicenseViewBinder.ViewHolder> {
 
     @NonNull @Override
-    protected ViewHolder onCreateViewHolder(
-        @NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View root = inflater.inflate(R.layout.about_page_item_license, parent, false);
         return new ViewHolder(root);
     }
 
 
     @Override
-    protected void onBindViewHolder(
-        @NonNull ViewHolder holder, @NonNull License data) {
+    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull License data) {
         holder.content.setText(data.name + " - " + data.author);
         holder.hint.setText(data.url + "\n" + data.type);
         holder.setURL(data.url);

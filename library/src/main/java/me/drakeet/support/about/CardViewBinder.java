@@ -14,8 +14,7 @@ import me.drakeet.multitype.ItemViewBinder;
 public class CardViewBinder extends ItemViewBinder<Card, CardViewBinder.ViewHolder> {
 
     @NonNull @Override
-    protected ViewHolder onCreateViewHolder(
-        @NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
         View root = inflater.inflate(R.layout.about_page_item_card, parent, false);
         return new ViewHolder(root);
     }
