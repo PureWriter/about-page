@@ -10,8 +10,6 @@
     <style name="AboutPage.Item">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:layout_marginLeft">8dp</item>
-        <item name="android:layout_marginRight">8dp</item>
     </style>
 
     <style name="AboutPage.Header"/>
@@ -22,8 +20,8 @@
     </style>
 
     <style name="AboutPage.Header.Icon">
-        <item name="android:layout_width">96dp</item>
-        <item name="android:layout_height">96dp</item>
+        <item name="android:layout_width">92dp</item>
+        <item name="android:layout_height">92dp</item>
     </style>
 
     <style name="AboutPage.Header.Slogan">
@@ -45,10 +43,12 @@
     </style>
 
     <style name="AboutPage.Item.Category">
+        <item name="android:layout_marginLeft">1dp</item>
+        <item name="android:layout_marginRight">1dp</item>
         <item name="android:paddingTop">12dp</item>
         <item name="android:paddingBottom">12dp</item>
-        <item name="android:paddingLeft">1dp</item>
-        <item name="android:paddingRight">1dp</item>
+        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingRight">12dp</item>
         <item name="android:textColor">@color/about_page_category_text_color</item>
     </style>
 
@@ -58,12 +58,14 @@
     </style>
 
     <style name="AboutPage.Item.Card">
-        <item name="android:layout_marginBottom">12dp</item>
         <item name="android:paddingLeft">16dp</item>
         <item name="android:paddingRight">12dp</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingBottom">16dp</item>
-        <item name="android:background">@drawable/about_page_card</item>
+        <item name="android:background">@drawable/about_page_card2</item>
+        <item name="android:elevation"
+            tools:ignore="NewApi">1dp
+        </item>
     </style>
 
     <style name="AboutPage.CardContent">

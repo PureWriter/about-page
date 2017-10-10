@@ -18,7 +18,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            consumerProguardFile 'proguard-rules.pro'
         }
     }
 }
@@ -31,5 +31,9 @@ dependencies {
     compile 'com.android.support:appcompat-v7:25.3.1'
     compile 'com.android.support:design:25.3.1'
     compile 'me.drakeet.multitype:multitype:3.3.1'
+    provided 'com.squareup.picasso:picasso:2.5.2'
+    provided('com.github.bumptech.glide:glide:4.2.0', {
+        exclude group: 'com.android.support'
+    })
     testCompile 'junit:junit:4.12'
 }
