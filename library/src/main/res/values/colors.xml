@@ -4,7 +4,7 @@
     <color name="about_page_card_shadow">#10000000</color>
     <color name="about_page_background">#f1f1f1</color>
     <color name="about_page_category_text_color">#757575</color>
-    <color name="about_page_card_text_color">#424242</color>
+    <color name="about_page_card_text_color">#de000000</color>
     <color name="about_page_card_selected">#44000000</color>
     <color name="about_page_card_normal">#ffffff</color>
     <color name="about_page_card_ripple">#33000000</color>
