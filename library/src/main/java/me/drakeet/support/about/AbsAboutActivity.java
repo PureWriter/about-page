@@ -38,6 +38,13 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     protected abstract void onItemsCreated(@NonNull Items items);
 
 
+    @NonNull
+    protected ImageLoader provideImageLoader() {
+        // noinspection ConstantConditions
+        return null;
+    }
+
+
     protected void onTitleViewCreated(@NonNull CollapsingToolbarLayout collapsingToolbar) {}
 
 
@@ -96,6 +103,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
         adapter.register(Line.class, new LineViewBinder());
         adapter.register(Contributor.class, new ContributorViewBinder());
         adapter.register(License.class, new LicenseViewBinder());
+        adapter.register(Recommended.class, new RecommendedViewBinder(provideImageLoader()));
         items = new Items();
         onItemsCreated(items);
         adapter.setItems(items);
