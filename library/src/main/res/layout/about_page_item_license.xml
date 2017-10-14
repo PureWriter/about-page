@@ -4,7 +4,7 @@
     style="@style/AboutPage.Item.Card">
 
     <TextView
-        style="@style/AboutPage.LicenseContent"
+        style="@style/AboutPage.LicenseTitle"
         android:id="@+id/content"
         tools:text="MultiType - drakeet"/>
 

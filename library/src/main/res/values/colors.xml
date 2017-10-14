@@ -9,8 +9,8 @@
     <color name="about_page_card_normal">#ffffff</color>
     <color name="about_page_card_ripple">#33000000</color>
     <color name="about_page_line">#eae9e9</color>
-    <color name="about_page_name_color">#424242</color>
-    <color name="about_page_desc_color">#757575</color>
-    <color name="about_page_license_content">#424242</color>
+    <color name="about_page_name_color">@color/about_page_card_text_color</color>
+    <color name="about_page_desc_color">@color/about_page_hint</color>
+    <color name="about_page_license_title">@color/about_page_card_text_color</color>
     <color name="about_page_hint">#757575</color>
 </resources>
