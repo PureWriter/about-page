@@ -1,5 +1,6 @@
 buildscript {
     repositories {
+        maven { url 'https://dl.google.com/dl/android/maven2/' }
         jcenter()
     }
     dependencies {
@@ -9,6 +10,7 @@ buildscript {
 
 allprojects {
     repositories {
+        maven { url 'https://dl.google.com/dl/android/maven2/' }
         jcenter()
     }
 }

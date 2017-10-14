@@ -3,6 +3,9 @@ package me.drakeet.support.about.sample;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatDelegate;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.ImageView;
 import android.widget.TextView;
 import me.drakeet.multitype.Items;
@@ -15,6 +18,9 @@ import me.drakeet.support.about.License;
 import me.drakeet.support.about.Line;
 import me.drakeet.support.about.Recommended;
 import me.drakeet.support.about.provided.PicassoImageLoader;
+
+import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_NO;
+import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_YES;
 
 /**
  * @author drakeet
@@ -62,6 +68,30 @@ public class AboutActivity extends AbsAboutActivity {
         items.add(new License("MultiType", "drakeet", License.APACHE_2, "https://github.com/drakeet/MultiType"));
         items.add(new Line());
         items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
+    }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_about, menu);
+        MenuItem dayNight = menu.findItem(R.id.menu_night_mode);
+        dayNight.setChecked(AppCompatDelegate.getDefaultNightMode() == MODE_NIGHT_YES);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem menuItem) {
+        if (menuItem.getItemId() == R.id.menu_night_mode) {
+            menuItem.setChecked(!menuItem.isChecked());
+            if (menuItem.isChecked()) {
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_YES);
+            } else {
+                AppCompatDelegate.setDefaultNightMode(MODE_NIGHT_NO);
+            }
+            getDelegate().applyDayNight();
+        }
+        return true;
     }
 
 

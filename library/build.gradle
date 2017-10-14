@@ -3,13 +3,13 @@ apply from: './gradle-mvn-push.gradle'
 apply plugin: 'jacoco'
 
 android {
-    compileSdkVersion 25
+    compileSdkVersion 26
     buildToolsVersion "26.0.2"
     resourcePrefix "about_page"
 
     defaultConfig {
-        minSdkVersion 9
-        targetSdkVersion 25
+        minSdkVersion 14
+        targetSdkVersion 26
         versionCode 52
         versionName "1.4.2"
 
@@ -28,12 +28,11 @@ dependencies {
     androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.android.support:appcompat-v7:25.3.1'
-    compile 'com.android.support:design:25.3.1'
+    compile 'com.android.support:appcompat-v7:26.1.0'
+    compile 'com.android.support:recyclerview-v7:26.1.0'
+    compile 'com.android.support:design:26.1.0'
     compile 'me.drakeet.multitype:multitype:3.3.2'
     provided 'com.squareup.picasso:picasso:2.5.2'
-    provided('com.github.bumptech.glide:glide:4.2.0', {
-        exclude group: 'com.android.support'
-    })
+    provided 'com.github.bumptech.glide:glide:4.2.0'
     testCompile 'junit:junit:4.12'
 }
