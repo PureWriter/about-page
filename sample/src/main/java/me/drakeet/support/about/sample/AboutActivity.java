@@ -1,7 +1,7 @@
 package me.drakeet.support.about.sample;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.Menu;
@@ -13,7 +13,6 @@ import me.drakeet.support.about.AbsAboutActivity;
 import me.drakeet.support.about.Card;
 import me.drakeet.support.about.Category;
 import me.drakeet.support.about.Contributor;
-import me.drakeet.support.about.ImageLoader;
 import me.drakeet.support.about.License;
 import me.drakeet.support.about.Line;
 import me.drakeet.support.about.Recommended;
@@ -29,9 +28,10 @@ import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_YES;
 @SuppressWarnings("SpellCheckingInspection")
 public class AboutActivity extends AbsAboutActivity {
 
-    @NonNull @Override
-    protected ImageLoader provideImageLoader() {
-        return new PicassoImageLoader();
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setImageLoader(new PicassoImageLoader());
     }
 
 
@@ -61,7 +61,7 @@ public class AboutActivity extends AbsAboutActivity {
             "快速的纯文本编辑器，我们希望写作能够回到原本的样子：纯粹、有安全感、随时、绝对不丢失内容、具备良好的写作体验。",
             "https://www.coolapk.com/apk/com.drakeet.purewriter",
             "2017-10-09 16:46:57",
-            "2017-10-09 16:46:57", null, 2.93)
+            "2017-10-09 16:46:57", 2.93, true)
         );
         items.add(new Line());
         items.add(new Recommended(
@@ -71,13 +71,13 @@ public class AboutActivity extends AbsAboutActivity {
             "专注打码的轻应用，包含功能：传统马赛克、毛玻璃效果、选区和手指模式打码，更有创新型高亮打码和 LowPoly 风格马赛克。只为满足一个纯纯的打码需求，让打码也能成为一种赏心悦目。",
             "https://www.coolapk.com/apk/me.drakeet.puremosaic",
             "2017-10-09 16:46:57",
-            "2017-10-09 16:46:57", null, 2.64)
+            "2017-10-09 16:46:57", 2.64, true)
         );
 
         items.add(new Category("Open Source Licenses"));
-        items.add(new License("MultiType", "drakeet", License.APACHE_2, "https://github.com/drakeet/MultiType"));
-        items.add(new Line());
         items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
+        items.add(new Line());
+        items.add(new License("MultiType", "drakeet", License.APACHE_2, "https://github.com/drakeet/MultiType"));
     }
 
 
@@ -102,15 +102,5 @@ public class AboutActivity extends AbsAboutActivity {
             getDelegate().applyDayNight();
         }
         return true;
-    }
-
-
-    public void onClickShare() {
-        Intent intent = new Intent(Intent.ACTION_SEND);
-        intent.setType("text/plain");
-        intent.putExtra(Intent.EXTRA_SUBJECT, "分享");
-        intent.putExtra(Intent.EXTRA_TEXT, getString(R.string.share_content));
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(Intent.createChooser(intent, getTitle()));
     }
 }

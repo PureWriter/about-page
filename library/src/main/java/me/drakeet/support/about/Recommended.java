@@ -2,7 +2,6 @@ package me.drakeet.support.about;
 
 import android.support.annotation.Keep;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 
 /**
  * @author drakeet
@@ -15,11 +14,11 @@ public class Recommended {
     public String iconUrl;
     public String packageName;
     public String description;
-    public String downloadURL;
-    public String createdAt;
-    public String updatedAt;
-    public @Nullable String deletedAt;
+    public String downloadUrl;
+    public String createdTime;
+    public String updatedTime;
     public double downloadSize;
+    public boolean openWithGooglePlay;
 
 
     public Recommended() {}
@@ -31,20 +30,20 @@ public class Recommended {
         @NonNull String iconUrl,
         @NonNull String packageName,
         @NonNull String description,
-        @NonNull String downloadURL,
-        @NonNull String createdAt,
-        @NonNull String updatedAt,
-        @Nullable String deletedAt,
-        double downloadSize) {
+        @NonNull String downloadUrl,
+        @NonNull String createdTime,
+        @NonNull String updatedTime,
+        double downloadSize,
+        boolean openWithGooglePlay) {
         this.id = id;
         this.appName = appName;
         this.iconUrl = iconUrl;
         this.packageName = packageName;
         this.description = description;
-        this.downloadURL = downloadURL;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-        this.deletedAt = deletedAt;
+        this.downloadUrl = downloadUrl;
+        this.createdTime = createdTime;
+        this.updatedTime = updatedTime;
         this.downloadSize = downloadSize;
+        this.openWithGooglePlay = openWithGooglePlay;
     }
 }

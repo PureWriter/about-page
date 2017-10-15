@@ -15,13 +15,14 @@
             android:id="@+id/icon"
             android:layout_width="56dp"
             android:layout_height="56dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginEnd="12dp"
             tools:src="#000000"/>
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="56dp"
             android:layout_weight="1"
-            android:layout_marginLeft="12dp"
             android:orientation="vertical"
             android:gravity="center_vertical">
 
@@ -49,6 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="12dp"
+                    android:layout_marginStart="12dp"
                     android:textColor="@color/about_page_card_text_color"
                     tools:text="Size"/>
 
