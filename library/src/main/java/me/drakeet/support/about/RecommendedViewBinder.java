@@ -1,8 +1,14 @@
 package me.drakeet.support.about;
 
 import android.annotation.SuppressLint;
+import android.content.ComponentName;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,10 +21,12 @@ import me.drakeet.multitype.ItemViewBinder;
  */
 public class RecommendedViewBinder extends ItemViewBinder<Recommended, RecommendedViewBinder.ViewHolder> {
 
-    private @NonNull final ImageLoader imageLoader;
+    private static final String TAG = "about-page";
+
+    private @Nullable final ImageLoader imageLoader;
 
 
-    public RecommendedViewBinder(@NonNull ImageLoader imageLoader) {
+    public RecommendedViewBinder(@Nullable ImageLoader imageLoader) {
         this.imageLoader = imageLoader;
     }
 
@@ -31,35 +39,26 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Recommended recommended) {
-        // noinspection ConstantConditions
-        if (imageLoader == null) {
-            throw new NullPointerException("You should call setImageLoader() first");
-        }
-        imageLoader.load(holder.icon, recommended.iconUrl);
-        holder.name.setText(recommended.appName);
-        holder.packageName.setText(recommended.packageName);
-        holder.description.setText(recommended.description);
-        @SuppressLint("SetTextI18n")
-        String size = recommended.downloadSize + "MB";
-        holder.size.setText(size);
+        holder.setRecommended(recommended, imageLoader);
     }
 
 
-    static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
-        private ImageView icon;
-        private TextView name;
-        private TextView packageName;
-        private TextView size;
-        private TextView description;
+        public ImageView icon;
+        public TextView name;
+        public TextView packageName;
+        public TextView sizeView;
+        public TextView description;
+        public Recommended recommended;
 
 
-        ViewHolder(View itemView) {
+        public ViewHolder(View itemView) {
             super(itemView);
             icon = (ImageView) itemView.findViewById(R.id.icon);
             name = (TextView) itemView.findViewById(R.id.name);
             packageName = (TextView) itemView.findViewById(R.id.packageName);
-            size = (TextView) itemView.findViewById(R.id.size);
+            sizeView = (TextView) itemView.findViewById(R.id.size);
             description = (TextView) itemView.findViewById(R.id.description);
             itemView.setOnClickListener(this);
         }
@@ -67,7 +66,46 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
 
         @Override
         public void onClick(View v) {
+            if (recommended != null) {
+                if (recommended.openWithGooglePlay) {
+                    openMarket(v.getContext(), recommended.packageName, recommended.downloadUrl);
+                } else {
+                    v.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(recommended.downloadUrl)));
+                }
+            }
+        }
 
+
+        protected void setRecommended(@NonNull Recommended recommended, @Nullable ImageLoader imageLoader) {
+            this.recommended = recommended;
+            if (imageLoader != null) {
+                icon.setVisibility(View.VISIBLE);
+                imageLoader.load(icon, recommended.iconUrl);
+            } else {
+                icon.setVisibility(View.GONE);
+                Log.e(TAG, "You should call AbsAboutActivity.setImageLoader() otherwise the icon will be gone.");
+            }
+            name.setText(recommended.appName);
+            packageName.setText(recommended.packageName);
+            description.setText(recommended.description);
+            @SuppressLint("SetTextI18n")
+            String size = recommended.downloadSize + "MB";
+            sizeView.setText(size);
+        }
+
+
+        private void openMarket(@NonNull Context context, @NonNull String targetPackage, @NonNull String defaultDownloadUrl) {
+            try {
+                Intent googlePlayIntent = context.getPackageManager().getLaunchIntentForPackage("com.android.vending");
+                ComponentName comp = new ComponentName("com.android.vending", "com.google.android.finsky.activities.LaunchUrlHandlerActivity");
+                // noinspection ConstantConditions
+                googlePlayIntent.setComponent(comp);
+                googlePlayIntent.setData(Uri.parse("market://details?id=" + targetPackage));
+                context.startActivity(googlePlayIntent);
+            } catch (Throwable e) {
+                context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(defaultDownloadUrl)));
+                e.printStackTrace();
+            }
         }
     }
 }

@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.support.annotation.ColorInt;
 import android.support.annotation.DrawableRes;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewCompat;
@@ -14,6 +15,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -32,20 +35,43 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     private Items items;
     private MultiTypeAdapter adapter;
     private TextView slogan, version;
+    private RecyclerView recyclerView;
+    private @Nullable ImageLoader imageLoader;
+    private boolean initialized;
 
 
     protected abstract void onCreateHeader(@NonNull ImageView icon, @NonNull TextView slogan, @NonNull TextView version);
     protected abstract void onItemsCreated(@NonNull Items items);
 
 
-    @NonNull
-    protected ImageLoader provideImageLoader() {
-        // noinspection ConstantConditions
-        return null;
+    protected void onTitleViewCreated(@NonNull CollapsingToolbarLayout collapsingToolbar) {}
+
+
+    public void setImageLoader(@NonNull ImageLoader imageLoader) {
+        this.imageLoader = imageLoader;
+        if (initialized) {
+            adapter.register(Recommended.class, new RecommendedViewBinder(imageLoader));
+            adapter.notifyDataSetChanged();
+        }
     }
 
 
-    protected void onTitleViewCreated(@NonNull CollapsingToolbarLayout collapsingToolbar) {}
+    @Override
+    public final void setContentView(View view) {
+        super.setContentView(view);
+    }
+
+
+    @Override
+    public final void setContentView(int layoutResID) {
+        super.setContentView(layoutResID);
+    }
+
+
+    @Override
+    public final void setContentView(View view, ViewGroup.LayoutParams params) {
+        super.setContentView(view, params);
+    }
 
 
     @Override
@@ -68,8 +94,25 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
         onApplyPresetAttrs();
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.list);
-        onSetupRecyclerView(recyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.list);
+    }
+
+
+    @Override
+    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        adapter = new MultiTypeAdapter();
+        adapter.register(Category.class, new CategoryViewBinder());
+        adapter.register(Card.class, new CardViewBinder());
+        adapter.register(Line.class, new LineViewBinder());
+        adapter.register(Contributor.class, new ContributorViewBinder());
+        adapter.register(License.class, new LicenseViewBinder());
+        adapter.register(Recommended.class, new RecommendedViewBinder(imageLoader));
+        items = new Items();
+        onItemsCreated(items);
+        adapter.setItems(items);
+        recyclerView.setAdapter(adapter);
+        initialized = true;
     }
 
 
@@ -93,21 +136,6 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
             setNavigationIcon(navigationIcon);
         }
         a.recycle();
-    }
-
-
-    private void onSetupRecyclerView(RecyclerView recyclerView) {
-        adapter = new MultiTypeAdapter();
-        adapter.register(Category.class, new CategoryViewBinder());
-        adapter.register(Card.class, new CardViewBinder());
-        adapter.register(Line.class, new LineViewBinder());
-        adapter.register(Contributor.class, new ContributorViewBinder());
-        adapter.register(License.class, new LicenseViewBinder());
-        adapter.register(Recommended.class, new RecommendedViewBinder(provideImageLoader()));
-        items = new Items();
-        onItemsCreated(items);
-        adapter.setItems(items);
-        recyclerView.setAdapter(adapter);
     }
 
 
