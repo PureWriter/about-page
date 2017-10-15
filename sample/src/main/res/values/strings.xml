@@ -2,4 +2,6 @@
     <string name="app_name">about-page</string>
     <string name="card_content">这是一个来自 drakeet 独立开发的 纯纯打码 App 中的关于页面。\n\n纯纯打码 是一款专注打码的轻应用，包含功能：传统马赛克、毛玻璃效果、选区和手指模式打，更有创新型高亮打码和 LowPoly 风格马赛克。\n只为满足一个纯纯的打码需求，让打码也能成为一种赏心悦目。\n\n如今我将这个页面从这个精致的应用中抽离出来开源，和我一贯做的开源项目一样，仅仅是为了让更多人获得方便。它代码干净易读，布局清晰优雅，在尺寸方面花费了许多调整的时间。\n\n很高兴能够分享给大家！最后，为了展示在卡片中能够自动识别链接和支持链接，我粘贴了纯纯打码的下载地址，你可以尝试点击试试，谢谢：\n\nhttp://www.coolapk.com/apk/me.drakeet.puremosaic\n\nhttps://fir.im/puremosaic</string>
     <string name="share_content">分享一款应用：「纯纯打码」，可能是最好用的打码软件，支持传统马赛克、毛玻璃，以及手指、选区打码，更有创意型高亮打码、LowPoly 风格，轻巧漂亮，打码也能够成为一种赏心悦目，推荐：http://t.cn/RbRjE4u</string>
+    <string name="pure_writer">Pure Writer</string>
+    <string name="pure_mosaic">Pure Mosaic</string>
 </resources>
