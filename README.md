@@ -15,7 +15,7 @@ In your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.support:about:2.0.0-rc1'
+    compile 'me.drakeet.support:about:2.0.0-rc2'
     compile 'me.drakeet.multitype:multitype:3.3.2'
 }
 ```
@@ -45,7 +45,6 @@ public class AboutActivity extends AbsAboutActivity {
 
         items.add(new Category("Open Source Licenses"));
         items.add(new License("MultiType", "drakeet", License.APACHE_2, "https://github.com/drakeet/MultiType"));
-        items.add(new Line());
         items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
     }
 }

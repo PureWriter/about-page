@@ -16,7 +16,6 @@ import me.drakeet.support.about.Card;
 import me.drakeet.support.about.Category;
 import me.drakeet.support.about.Contributor;
 import me.drakeet.support.about.License;
-import me.drakeet.support.about.Line;
 import me.drakeet.support.about.OnRecommendedClickedListener;
 import me.drakeet.support.about.Recommended;
 import me.drakeet.support.about.provided.PicassoImageLoader;
@@ -67,7 +66,6 @@ public class AboutActivity extends AbsAboutActivity implements OnRecommendedClic
             "2017-10-09 16:46:57",
             "2017-10-09 16:46:57", 2.93, true)
         );
-        items.add(new Line());
         items.add(new Recommended(
             1, getString(R.string.pure_mosaic),
             "http://image.coolapk.com/apk_logo/2016/0831/ic_pure_mosaic-2-for-16599-o_1argff2ddgvt1lfv1b3mk2vd6pq-uid-435200.png",
@@ -80,7 +78,6 @@ public class AboutActivity extends AbsAboutActivity implements OnRecommendedClic
 
         items.add(new Category("Open Source Licenses"));
         items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
-        items.add(new Line());
         items.add(new License("MultiType", "drakeet", License.APACHE_2, "https://github.com/drakeet/MultiType"));
     }
 
