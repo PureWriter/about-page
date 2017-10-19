@@ -38,6 +38,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private @Nullable ImageLoader imageLoader;
     private boolean initialized;
+    private @Nullable OnRecommendedClickedListener onRecommendedClickedListener;
 
 
     protected abstract void onCreateHeader(@NonNull ImageView icon, @NonNull TextView slogan, @NonNull TextView version);
@@ -50,9 +51,13 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     public void setImageLoader(@NonNull ImageLoader imageLoader) {
         this.imageLoader = imageLoader;
         if (initialized) {
-            adapter.register(Recommended.class, new RecommendedViewBinder(imageLoader));
             adapter.notifyDataSetChanged();
         }
+    }
+
+
+    public @Nullable ImageLoader getImageLoader() {
+        return imageLoader;
     }
 
 
@@ -107,7 +112,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
         adapter.register(Line.class, new LineViewBinder());
         adapter.register(Contributor.class, new ContributorViewBinder());
         adapter.register(License.class, new LicenseViewBinder());
-        adapter.register(Recommended.class, new RecommendedViewBinder(imageLoader));
+        adapter.register(Recommended.class, new RecommendedViewBinder(this));
         items = new Items();
         onItemsCreated(items);
         adapter.setItems(items);
@@ -240,5 +245,15 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
 
     public TextView versionTextView() {
         return version;
+    }
+
+
+    public void setOnRecommendedClickedListener(@Nullable OnRecommendedClickedListener listener) {
+        this.onRecommendedClickedListener = listener;
+    }
+
+
+    public @Nullable OnRecommendedClickedListener getOnRecommendedClickedListener() {
+        return onRecommendedClickedListener;
     }
 }

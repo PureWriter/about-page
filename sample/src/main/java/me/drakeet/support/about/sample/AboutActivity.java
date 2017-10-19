@@ -6,8 +6,10 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 import me.drakeet.multitype.Items;
 import me.drakeet.support.about.AbsAboutActivity;
 import me.drakeet.support.about.Card;
@@ -15,6 +17,7 @@ import me.drakeet.support.about.Category;
 import me.drakeet.support.about.Contributor;
 import me.drakeet.support.about.License;
 import me.drakeet.support.about.Line;
+import me.drakeet.support.about.OnRecommendedClickedListener;
 import me.drakeet.support.about.Recommended;
 import me.drakeet.support.about.provided.PicassoImageLoader;
 
@@ -26,12 +29,13 @@ import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_YES;
  */
 @SuppressLint("SetTextI18n")
 @SuppressWarnings("SpellCheckingInspection")
-public class AboutActivity extends AbsAboutActivity {
+public class AboutActivity extends AbsAboutActivity implements OnRecommendedClickedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setImageLoader(new PicassoImageLoader());
+        setOnRecommendedClickedListener(this);
     }
 
 
@@ -102,5 +106,12 @@ public class AboutActivity extends AbsAboutActivity {
             getDelegate().applyDayNight();
         }
         return true;
+    }
+
+
+    @Override
+    public boolean onRecommendedClicked(@NonNull View itemView, @NonNull Recommended recommended) {
+        Toast.makeText(this, "onRecommendedClicked: " + recommended.appName, Toast.LENGTH_SHORT).show();
+        return false;
     }
 }
