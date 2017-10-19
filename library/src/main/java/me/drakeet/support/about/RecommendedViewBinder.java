@@ -23,11 +23,11 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
 
     private static final String TAG = "about-page";
 
-    private @Nullable final ImageLoader imageLoader;
+    private @NonNull final AbsAboutActivity activity;
 
 
-    public RecommendedViewBinder(@Nullable ImageLoader imageLoader) {
-        this.imageLoader = imageLoader;
+    public RecommendedViewBinder(@NonNull AbsAboutActivity activity) {
+        this.activity = activity;
     }
 
 
@@ -39,11 +39,11 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
 
     @Override
     protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Recommended recommended) {
-        holder.setRecommended(recommended, imageLoader);
+        holder.setRecommended(recommended, activity.getImageLoader());
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ImageView icon;
         public TextView name;
@@ -67,6 +67,10 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
         @Override
         public void onClick(View v) {
             if (recommended != null) {
+                OnRecommendedClickedListener listener = activity.getOnRecommendedClickedListener();
+                if (listener != null && listener.onRecommendedClicked(v, recommended)) {
+                    return;
+                }
                 if (recommended.openWithGooglePlay) {
                     openMarket(v.getContext(), recommended.packageName, recommended.downloadUrl);
                 } else {
