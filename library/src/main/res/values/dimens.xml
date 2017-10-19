@@ -3,4 +3,5 @@
     <dimen name="about_page_header_height">212dp</dimen>
     <dimen name="about_page_avatar_size">38dp</dimen>
     <dimen name="about_page_license_text_size">13sp</dimen>
+    <dimen name="about_page_recommended_icon_size">48dp</dimen>
 </resources>
