@@ -39,4 +39,10 @@ public class LicenseViewBinder extends ItemViewBinder<License, LicenseViewBinder
             hint = (TextView) itemView.findViewById(R.id.hint);
         }
     }
+
+
+    @Override
+    protected long getItemId(@NonNull License item) {
+        return item.hashCode();
+    }
 }

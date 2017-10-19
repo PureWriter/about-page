@@ -36,4 +36,10 @@ public class CardViewBinder extends ItemViewBinder<Card, CardViewBinder.ViewHold
             content = (TextView) itemView.findViewById(R.id.content);
         }
     }
+
+
+    @Override
+    protected long getItemId(@NonNull Card item) {
+        return item.hashCode();
+    }
 }

@@ -112,4 +112,10 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
             }
         }
     }
+
+
+    @Override
+    protected long getItemId(@NonNull Recommended item) {
+        return item.hashCode();
+    }
 }

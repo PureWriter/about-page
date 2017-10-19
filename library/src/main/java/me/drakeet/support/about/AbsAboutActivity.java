@@ -116,6 +116,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
         items = new Items();
         onItemsCreated(items);
         adapter.setItems(items);
+        adapter.setHasStableIds(true);
         recyclerView.addItemDecoration(new DividerItemDecoration(adapter));
         recyclerView.setAdapter(adapter);
         initialized = true;
@@ -219,32 +220,32 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     }
 
 
-    public Toolbar toolbar() {
+    public Toolbar getToolbar() {
         return toolbar;
     }
 
 
-    public CollapsingToolbarLayout collapsingToolbar() {
+    public CollapsingToolbarLayout getCollapsingToolbar() {
         return collapsingToolbar;
     }
 
 
-    public Items items() {
+    public Items getItems() {
         return items;
     }
 
 
-    public MultiTypeAdapter adapter() {
+    public MultiTypeAdapter getAdapter() {
         return adapter;
     }
 
 
-    public TextView sloganTextView() {
+    public TextView getSloganTextView() {
         return slogan;
     }
 
 
-    public TextView versionTextView() {
+    public TextView getVersionTextView() {
         return version;
     }
 

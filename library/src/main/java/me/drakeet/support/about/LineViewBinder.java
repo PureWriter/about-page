@@ -32,4 +32,10 @@ public class LineViewBinder extends ItemViewBinder<Line, LineViewBinder.ViewHold
             super(itemView);
         }
     }
+
+
+    @Override
+    protected long getItemId(@NonNull Line item) {
+        return item.hashCode();
+    }
 }
