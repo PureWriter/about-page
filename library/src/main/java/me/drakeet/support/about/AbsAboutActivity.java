@@ -103,7 +103,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     }
 
 
-    @Override
+    @Override @SuppressWarnings("deprecation")
     protected void onPostCreate(@Nullable Bundle savedInstanceState) {
         super.onPostCreate(savedInstanceState);
         adapter = new MultiTypeAdapter();
@@ -116,6 +116,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
         items = new Items();
         onItemsCreated(items);
         adapter.setItems(items);
+        recyclerView.addItemDecoration(new DividerItemDecoration(adapter));
         recyclerView.setAdapter(adapter);
         initialized = true;
     }

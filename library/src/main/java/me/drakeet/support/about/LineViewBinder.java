@@ -9,7 +9,10 @@ import me.drakeet.multitype.ItemViewBinder;
 
 /**
  * @author drakeet
+ * @deprecated You do not need to use Line now,
+ * we use {@link DividerItemDecoration} to automatically generate Lines.
  */
+@Deprecated
 public class LineViewBinder extends ItemViewBinder<Line, LineViewBinder.ViewHolder> {
 
     @NonNull @Override
