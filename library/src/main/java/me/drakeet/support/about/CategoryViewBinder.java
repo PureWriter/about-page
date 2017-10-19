@@ -36,4 +36,10 @@ public class CategoryViewBinder extends ItemViewBinder<Category, CategoryViewBin
             category = (TextView) itemView.findViewById(R.id.category);
         }
     }
+
+
+    @Override
+    protected long getItemId(@NonNull Category item) {
+        return item.hashCode();
+    }
 }

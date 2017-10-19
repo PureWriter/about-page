@@ -44,4 +44,10 @@ public class ContributorViewBinder
             desc = (TextView) itemView.findViewById(R.id.desc);
         }
     }
+
+
+    @Override
+    protected long getItemId(@NonNull Contributor item) {
+        return item.hashCode();
+    }
 }
