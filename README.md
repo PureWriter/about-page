@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/drakeet/about-page/blob/master/LICENSE)
 ![maven-central](https://img.shields.io/maven-central/v/me.drakeet.support/about.svg)
 
-A nice about page based on [MultiType](https://github.com/drakeet/MultiType), material design and easy to use.
+A nice about page based on [MultiType](https://github.com/drakeet/MultiType), material design and very easy to use.
 
 From the [PureWriter](https://play.google.com/store/apps/details?id=com.drakeet.purewriter) App:
 
@@ -68,8 +68,7 @@ public class AboutActivity extends AbsAboutActivity {
 </style>
 ```
 
-### TODO
+### Screenshots
 
-- Add a inner activity and builder for convenience
-
-<img src="http://ww3.sinaimg.cn/large/86e2ff85gw1f8wrhh1grlj20k00zk41i.jpg" width=270 height=486/> <img src="http://ww3.sinaimg.cn/large/86e2ff85gw1f8wrhv6958j20k00zkjtb.jpg" width=270 height=486/> <img src="http://ww4.sinaimg.cn/large/86e2ff85gw1f8wri3lpwqj20k00zkmzf.jpg" width=270 height=486/>
+<img src="https://i.loli.net/2017/10/20/59e95e4c78f5b.png" width=270 height=486/> <img src="https://i.loli.net/2017/10/20/59e95e4c8243c.png
+" width=270 height=486/>
