@@ -18,6 +18,7 @@ import me.drakeet.support.about.Contributor;
 import me.drakeet.support.about.License;
 import me.drakeet.support.about.OnRecommendedClickedListener;
 import me.drakeet.support.about.Recommended;
+import me.drakeet.support.about.extension.RecommendedLoaderDelegate;
 import me.drakeet.support.about.provided.PicassoImageLoader;
 
 import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_NO;
@@ -56,7 +57,7 @@ public class AboutActivity extends AbsAboutActivity implements OnRecommendedClic
         items.add(new Contributor(R.drawable.avatar_drakeet, "黑猫酱", "Developer", "https://drakeet.me"));
         items.add(new Contributor(R.drawable.avatar_drakeet, "小艾大人", "Developer"));
 
-        items.add(new Category("应用推荐"));
+        items.add(new Category("我独立开发的应用"));
         items.add(new Recommended(
             0, getString(R.string.pure_writer),
             "https://storage.recommend.wetolink.com/storage/app_recommend/images/YBMHN6SRpZeF0VHbPZWZGWJ2GyB6uaPx.png",
@@ -75,6 +76,10 @@ public class AboutActivity extends AbsAboutActivity implements OnRecommendedClic
             "2017-10-09 16:46:57",
             "2017-10-09 16:46:57", 2.64, true)
         );
+        // Load more Recommended items from remote server asynchronously
+        RecommendedLoaderDelegate.attach(this, items.size());
+        // or
+        // RecommendedLoader.getInstance().loadInto(this, items.size());
 
         items.add(new Category("Open Source Licenses"));
         items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
