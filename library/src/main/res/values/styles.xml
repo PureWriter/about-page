@@ -62,7 +62,7 @@
         <item name="android:paddingRight">12dp</item>
         <item name="android:paddingTop">16dp</item>
         <item name="android:paddingBottom">16dp</item>
-        <item name="android:background">@drawable/about_page_card2</item>
+        <item name="android:background">@drawable/about_page_card</item>
         <item name="android:elevation"
             tools:ignore="NewApi">1dp
         </item>

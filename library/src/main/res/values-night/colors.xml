@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="about_page_card_background">#303030</color>
-    <color name="about_page_card_shadow">#10000000</color>
     <color name="about_page_background">#212121</color>
     <color name="about_page_category_text_color">#abaaaa</color>
     <color name="about_page_card_text_color">#deffffff</color>

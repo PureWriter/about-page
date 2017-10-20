@@ -1,8 +1,1 @@
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.drakeet.support.about">
-
-    <application>
-
-    </application>
-
-</manifest>
+<manifest package="me.drakeet.support.about"/>
