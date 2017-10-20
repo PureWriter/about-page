@@ -17,6 +17,8 @@ In your `build.gradle`:
 dependencies {
     compile 'me.drakeet.support:about:2.0.0-rc5'
     compile 'me.drakeet.multitype:multitype:3.3.3'
+    // extension for loading our host Android Links data
+    // compile 'me.drakeet.support:about-extension:2.0.0-rc5'
 }
 ```
 
