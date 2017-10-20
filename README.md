@@ -70,5 +70,4 @@ public class AboutActivity extends AbsAboutActivity {
 
 ### Screenshots
 
-<img src="https://i.loli.net/2017/10/20/59e95e4c78f5b.png" width=270 height=486/> <img src="https://i.loli.net/2017/10/20/59e95e4c8243c.png
-" width=270 height=486/>
+<img src="https://i.loli.net/2017/10/20/59e95e4c78f5b.png" width=270/> <img src="https://i.loli.net/2017/10/20/59e95e4c8243c.png" width=270/>
