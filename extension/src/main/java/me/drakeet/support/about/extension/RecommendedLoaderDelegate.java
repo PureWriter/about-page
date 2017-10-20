@@ -8,7 +8,7 @@ import me.drakeet.support.about.AbsAboutActivity;
 import okhttp3.Call;
 
 /**
- * If use the delegate class, you have to use the <code>support:appcompat-v7 26.1.0 or above<code/>,
+ * If use the delegate class, you have to use the support:appcompat-v7 26.1.0 or above1,
  * and keep all class of android lifecycle with proguard:
  * <pre>
  * ## Android architecture components: Lifecycle
