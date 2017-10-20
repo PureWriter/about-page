@@ -53,7 +53,7 @@ public class AboutActivity extends AbsAboutActivity {
 ### Custom style/theme
 
 ```xml
-<style name="AppTheme.About" parent="Theme.AppCompat.Light.DarkActionBar">
+<style name="AppTheme.About" parent="Theme.AppCompat.DayNight.NoActionBar">
     <item name="windowActionBar">false</item>
     <item name="windowNoTitle">true</item>
     <item name="colorPrimary">@color/colorPrimary</item>
