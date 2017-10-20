@@ -54,8 +54,6 @@ public class AboutActivity extends AbsAboutActivity {
 
 ```xml
 <style name="AppTheme.About" parent="Theme.AppCompat.DayNight.NoActionBar">
-    <item name="windowActionBar">false</item>
-    <item name="windowNoTitle">true</item>
     <item name="colorPrimary">@color/colorPrimary</item>
     <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     <item name="colorAccent">@android:color/black</item>
