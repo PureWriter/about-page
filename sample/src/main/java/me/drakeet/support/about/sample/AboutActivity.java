@@ -124,7 +124,7 @@ public class AboutActivity extends AbsAboutActivity
     @Override
     public boolean onContributorClicked(@NonNull View itemView, @NonNull Contributor contributor) {
         if (contributor.name.equals("小艾大人")) {
-            Toast.makeText(this, "onContributorClick: " + contributor.name, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "onContributorClicked: " + contributor.name, Toast.LENGTH_SHORT).show();
             return true;
         }
         return false;
