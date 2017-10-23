@@ -19,6 +19,8 @@ dependencies {
     compile 'me.drakeet.multitype:multitype:3.3.3'
     // extension for loading our host Android Links data
     // compile 'me.drakeet.support:about-extension:2.0.1'
+    // for using the PicassoImageLoader
+    // compile 'com.squareup.picasso:picasso:2.5.2'
 }
 ```
 
@@ -30,6 +32,8 @@ dependencies {
     implementation 'me.drakeet.multitype:multitype:3.3.3'
     // extension for loading our host Android Links data
     // implementation 'me.drakeet.support:about-extension:2.0.1'
+    // for using the PicassoImageLoader
+    // implementation 'com.squareup.picasso:picasso:2.5.2'
 }
 ```
 
