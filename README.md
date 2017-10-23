@@ -15,10 +15,10 @@ In your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.support:about:2.0.0'
+    compile 'me.drakeet.support:about:2.0.1'
     compile 'me.drakeet.multitype:multitype:3.3.3'
     // extension for loading our host Android Links data
-    // compile 'me.drakeet.support:about-extension:2.0.0'
+    // compile 'me.drakeet.support:about-extension:2.0.1'
 }
 ```
 
@@ -26,10 +26,10 @@ If you are using `com.android.tools.build:gradle:3.+`, use this instead:
 
 ```groovy
 dependencies {
-    implementation 'me.drakeet.support:about:2.0.0'
+    implementation 'me.drakeet.support:about:2.0.1'
     implementation 'me.drakeet.multitype:multitype:3.3.3'
     // extension for loading our host Android Links data
-    // implementation 'me.drakeet.support:about-extension:2.0.0'
+    // implementation 'me.drakeet.support:about-extension:2.0.1'
 }
 ```
 
