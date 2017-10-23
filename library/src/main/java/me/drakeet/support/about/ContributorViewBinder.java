@@ -19,10 +19,17 @@ import static android.net.Uri.parse;
 public class ContributorViewBinder
     extends ItemViewBinder<Contributor, ContributorViewBinder.ViewHolder> {
 
+    private @NonNull final AbsAboutActivity activity;
+
+
+    public ContributorViewBinder(@NonNull AbsAboutActivity activity) {
+        this.activity = activity;
+    }
+
+
     @NonNull @Override
     protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View root = inflater.inflate(R.layout.about_page_item_contributor, parent, false);
-        return new ViewHolder(root);
+        return new ViewHolder(inflater.inflate(R.layout.about_page_item_contributor, parent, false), activity);
     }
 
 
@@ -35,38 +42,40 @@ public class ContributorViewBinder
     }
 
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ImageView avatar;
         public TextView name;
         public TextView desc;
         public Contributor data;
+        protected @NonNull final AbsAboutActivity activity;
 
-        public ViewHolder(final View itemView) {
+
+        public ViewHolder(View itemView, @NonNull AbsAboutActivity activity) {
             super(itemView);
+            this.activity = activity;
             avatar = (ImageView) itemView.findViewById(R.id.avatar);
             name = (TextView) itemView.findViewById(R.id.name);
             desc = (TextView) itemView.findViewById(R.id.desc);
-            itemView.setOnClickListener(new View.OnClickListener() {
-                @Override public void onClick(View v) {
-                    if (v.getContext() instanceof AbsAboutActivity) {
-                        AbsAboutActivity activity = (AbsAboutActivity) v.getContext();
-                        OnContributorClickListener listener = activity.getOnContributorClickListener();
-                        if (listener != null && listener.onContributorClick(itemView, data)) {
-                            return;
-                        }
-                    }
-                    if (data.url != null) {
-                        Intent intent = new Intent(Intent.ACTION_VIEW);
-                        intent.setData(parse(data.url));
-                        try {
-                            v.getContext().startActivity(intent);
-                        } catch (ActivityNotFoundException e) {
-                            e.printStackTrace();
-                        }
-                    }
+            itemView.setOnClickListener(this);
+        }
+
+
+        @Override
+        public void onClick(View v) {
+            OnContributorClickListener listener = activity.getOnContributorClickListener();
+            if (listener != null && listener.onContributorClick(v, data)) {
+                return;
+            }
+            if (data.url != null) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(parse(data.url));
+                try {
+                    v.getContext().startActivity(intent);
+                } catch (ActivityNotFoundException e) {
+                    e.printStackTrace();
                 }
-            });
+            }
         }
     }
 

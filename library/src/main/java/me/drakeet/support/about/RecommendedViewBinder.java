@@ -34,7 +34,7 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
 
     @NonNull @Override
     protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        return new ViewHolder(inflater.inflate(R.layout.about_page_item_recommended, parent, false));
+        return new ViewHolder(inflater.inflate(R.layout.about_page_item_recommended, parent, false), activity);
     }
 
 
@@ -44,7 +44,7 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
     }
 
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         public ImageView icon;
         public TextView name;
@@ -53,10 +53,12 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
         public TextView description;
         public Recommended recommended;
         private @Nullable BottomSheetDialog bottomSheet;
+        private @NonNull final AbsAboutActivity activity;
 
 
-        public ViewHolder(View itemView) {
+        public ViewHolder(View itemView, @NonNull AbsAboutActivity activity) {
             super(itemView);
+            this.activity = activity;
             icon = (ImageView) itemView.findViewById(R.id.icon);
             name = (TextView) itemView.findViewById(R.id.name);
             packageName = (TextView) itemView.findViewById(R.id.packageName);

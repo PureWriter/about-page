@@ -111,7 +111,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
         adapter.register(Category.class, new CategoryViewBinder());
         adapter.register(Card.class, new CardViewBinder());
         adapter.register(Line.class, new LineViewBinder());
-        adapter.register(Contributor.class, new ContributorViewBinder());
+        adapter.register(Contributor.class, new ContributorViewBinder(this));
         adapter.register(License.class, new LicenseViewBinder());
         adapter.register(Recommended.class, new RecommendedViewBinder(this));
         items = new Items();
@@ -269,5 +269,4 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     public @Nullable OnContributorClickListener getOnContributorClickListener() {
         return onContributorClickListener;
     }
-
 }

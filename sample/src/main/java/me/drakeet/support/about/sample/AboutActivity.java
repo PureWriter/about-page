@@ -25,9 +25,7 @@ import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_YES;
 @SuppressLint("SetTextI18n")
 @SuppressWarnings("SpellCheckingInspection")
 public class AboutActivity extends AbsAboutActivity
-        implements OnRecommendedClickedListener, OnContributorClickListener {
-
-    private Contributor contributorXiaoAi;
+    implements OnRecommendedClickedListener, OnContributorClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +52,7 @@ public class AboutActivity extends AbsAboutActivity
         items.add(new Category("Developers"));
         items.add(new Contributor(R.drawable.avatar_drakeet, "drakeet", "Developer & designer", "http://weibo.com/drak11t"));
         items.add(new Contributor(R.drawable.avatar_drakeet, "黑猫酱", "Developer", "https://drakeet.me"));
-        if (contributorXiaoAi == null) {
-            contributorXiaoAi = new Contributor(R.drawable.avatar_drakeet, "小艾大人", "Developer");
-        }
-        items.add(contributorXiaoAi);
+        items.add(new Contributor(R.drawable.avatar_drakeet, "小艾大人", "Developer"));
 
         items.add(new Category("我独立开发的应用"));
         items.add(new Recommended(
@@ -119,9 +114,10 @@ public class AboutActivity extends AbsAboutActivity
         return false;
     }
 
+
     @Override
     public boolean onContributorClick(@NonNull View itemView, @NonNull Contributor contributor) {
-        if (contributor == contributorXiaoAi) {
+        if (contributor.name.equals("小艾大人")) {
             Toast.makeText(this, "onContributorClick: " + contributor.name, Toast.LENGTH_SHORT).show();
             return true;
         }
