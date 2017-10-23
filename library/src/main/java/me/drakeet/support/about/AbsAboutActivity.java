@@ -39,6 +39,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     private @Nullable ImageLoader imageLoader;
     private boolean initialized;
     private @Nullable OnRecommendedClickedListener onRecommendedClickedListener;
+    private @Nullable OnContributorClickListener onContributorClickListener;
 
 
     protected abstract void onCreateHeader(@NonNull ImageView icon, @NonNull TextView slogan, @NonNull TextView version);
@@ -258,4 +259,15 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     public @Nullable OnRecommendedClickedListener getOnRecommendedClickedListener() {
         return onRecommendedClickedListener;
     }
+
+
+    public void setOnContributorClickListener(@Nullable OnContributorClickListener listener) {
+        this.onContributorClickListener = listener;
+    }
+
+
+    public @Nullable OnContributorClickListener getOnContributorClickListener() {
+        return onContributorClickListener;
+    }
+
 }

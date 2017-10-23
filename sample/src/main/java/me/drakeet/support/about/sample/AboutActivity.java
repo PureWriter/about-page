@@ -1,6 +1,7 @@
 package me.drakeet.support.about.sample;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
@@ -11,13 +12,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import me.drakeet.multitype.Items;
-import me.drakeet.support.about.AbsAboutActivity;
-import me.drakeet.support.about.Card;
-import me.drakeet.support.about.Category;
-import me.drakeet.support.about.Contributor;
-import me.drakeet.support.about.License;
-import me.drakeet.support.about.OnRecommendedClickedListener;
-import me.drakeet.support.about.Recommended;
+import me.drakeet.support.about.*;
 import me.drakeet.support.about.extension.RecommendedLoaderDelegate;
 import me.drakeet.support.about.provided.PicassoImageLoader;
 
@@ -29,13 +24,17 @@ import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_YES;
  */
 @SuppressLint("SetTextI18n")
 @SuppressWarnings("SpellCheckingInspection")
-public class AboutActivity extends AbsAboutActivity implements OnRecommendedClickedListener {
+public class AboutActivity extends AbsAboutActivity
+        implements OnRecommendedClickedListener, OnContributorClickListener {
+
+    private Contributor contributorXiaoAi;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setImageLoader(new PicassoImageLoader());
         setOnRecommendedClickedListener(this);
+        setOnContributorClickListener(this);
     }
 
 
@@ -55,7 +54,10 @@ public class AboutActivity extends AbsAboutActivity implements OnRecommendedClic
         items.add(new Category("Developers"));
         items.add(new Contributor(R.drawable.avatar_drakeet, "drakeet", "Developer & designer", "http://weibo.com/drak11t"));
         items.add(new Contributor(R.drawable.avatar_drakeet, "黑猫酱", "Developer", "https://drakeet.me"));
-        items.add(new Contributor(R.drawable.avatar_drakeet, "小艾大人", "Developer"));
+        if (contributorXiaoAi == null) {
+            contributorXiaoAi = new Contributor(R.drawable.avatar_drakeet, "小艾大人", "Developer");
+        }
+        items.add(contributorXiaoAi);
 
         items.add(new Category("我独立开发的应用"));
         items.add(new Recommended(
@@ -116,4 +118,14 @@ public class AboutActivity extends AbsAboutActivity implements OnRecommendedClic
         Toast.makeText(this, "onRecommendedClicked: " + recommended.appName, Toast.LENGTH_SHORT).show();
         return false;
     }
+
+    @Override
+    public boolean onContributorClick(@NonNull View itemView, @NonNull Contributor contributor) {
+        if (contributor == contributorXiaoAi) {
+            Toast.makeText(this, "onContributorClick: " + contributor.name, Toast.LENGTH_SHORT).show();
+            return true;
+        }
+        return false;
+    }
+
 }
