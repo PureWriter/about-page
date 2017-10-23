@@ -109,5 +109,13 @@
         <item name="android:textColor">@color/about_page_hint</item>
     </style>
 
-    <color name="about_page_link_text_color">@android:color/black</color>
+    <style name="AboutPage.BottomSheetItem">
+        <item name="android:paddingLeft">24dp</item>
+        <item name="android:paddingRight">24dp</item>
+        <item name="android:gravity">center|left</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/about_page_card_text_color</item>
+        <item name="android:background">?selectableItemBackground</item>
+    </style>
+
 </resources>

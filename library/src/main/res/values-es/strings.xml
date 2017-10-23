@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="about_page_open_with">Abrir con:</string>
+    <string name="about_page_browser">Navegador web</string>
+</resources>

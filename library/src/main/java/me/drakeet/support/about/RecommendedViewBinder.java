@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.BottomSheetDialog;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -51,6 +52,7 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
         public TextView sizeView;
         public TextView description;
         public Recommended recommended;
+        private @Nullable BottomSheetDialog bottomSheet;
 
 
         public ViewHolder(View itemView) {
@@ -66,15 +68,27 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
 
         @Override
         public void onClick(View v) {
-            if (recommended != null) {
+            if (v.getId() == R.id.google_play && bottomSheet != null) {
+                openWithMarket(v.getContext(), recommended.packageName, recommended.downloadUrl);
+                bottomSheet.dismiss();
+            } else if (v.getId() == R.id.web && bottomSheet != null) {
+                openWithWeb(v.getContext(), recommended);
+                bottomSheet.dismiss();
+            } else if (recommended != null) {
                 OnRecommendedClickedListener listener = activity.getOnRecommendedClickedListener();
                 if (listener != null && listener.onRecommendedClicked(v, recommended)) {
                     return;
                 }
                 if (recommended.openWithGooglePlay) {
-                    openMarket(v.getContext(), recommended.packageName, recommended.downloadUrl);
+                    bottomSheet = new BottomSheetDialog(v.getContext());
+                    bottomSheet.setContentView(R.layout.about_page_dialog_market_chooser);
+                    bottomSheet.show();
+                    // noinspection ConstantConditions
+                    bottomSheet.findViewById(R.id.web).setOnClickListener(this);
+                    // noinspection ConstantConditions
+                    bottomSheet.findViewById(R.id.google_play).setOnClickListener(this);
                 } else {
-                    v.getContext().startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(recommended.downloadUrl)));
+                    openWithWeb(v.getContext(), recommended);
                 }
             }
         }
@@ -98,7 +112,12 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
         }
 
 
-        private void openMarket(@NonNull Context context, @NonNull String targetPackage, @NonNull String defaultDownloadUrl) {
+        protected void openWithWeb(@NonNull Context context, @NonNull Recommended recommended) {
+            context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(recommended.downloadUrl)));
+        }
+
+
+        private void openWithMarket(@NonNull Context context, @NonNull String targetPackage, @NonNull String defaultDownloadUrl) {
             try {
                 Intent googlePlayIntent = context.getPackageManager().getLaunchIntentForPackage("com.android.vending");
                 ComponentName comp = new ComponentName("com.android.vending", "com.google.android.finsky.activities.LaunchUrlHandlerActivity");

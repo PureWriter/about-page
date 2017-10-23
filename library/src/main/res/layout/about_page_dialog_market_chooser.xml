@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/AboutPage.BottomSheetItem"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/about_page_bottom_sheet_item_height"
+        android:textStyle="bold"
+        android:text="@string/about_page_open_with"/>
+
+    <TextView
+        style="@style/AboutPage.BottomSheetItem"
+        android:id="@+id/web"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/about_page_bottom_sheet_item_height"
+        android:text="@string/about_page_browser"/>
+
+    <TextView
+        style="@style/AboutPage.BottomSheetItem"
+        android:id="@+id/google_play"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/about_page_bottom_sheet_item_height"
+        android:text="Google Play"
+        tools:ignore="HardcodedText"/>
+
+</LinearLayout>
