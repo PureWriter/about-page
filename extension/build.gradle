@@ -33,5 +33,5 @@ dependencies {
     })
     compile 'com.squareup.okhttp3:okhttp:3.9.0'
     compile 'com.google.code.gson:gson:2.8.2'
-    provided 'me.drakeet.support:about:2.0.1'
+    provided project(':library')
 }

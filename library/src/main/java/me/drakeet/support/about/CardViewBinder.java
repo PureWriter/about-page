@@ -11,6 +11,7 @@ import me.drakeet.multitype.ItemViewBinder;
 /**
  * @author drakeet
  */
+@SuppressWarnings("WeakerAccess")
 public class CardViewBinder extends ItemViewBinder<Card, CardViewBinder.ViewHolder> {
 
     @NonNull @Override

@@ -1,7 +1,6 @@
 package me.drakeet.support.about.sample;
 
 import android.annotation.SuppressLint;
-import android.app.AlertDialog;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatDelegate;
@@ -12,7 +11,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import me.drakeet.multitype.Items;
-import me.drakeet.support.about.*;
+import me.drakeet.support.about.AbsAboutActivity;
+import me.drakeet.support.about.Card;
+import me.drakeet.support.about.Category;
+import me.drakeet.support.about.Contributor;
+import me.drakeet.support.about.License;
+import me.drakeet.support.about.OnContributorClickedListener;
+import me.drakeet.support.about.OnRecommendedClickedListener;
+import me.drakeet.support.about.Recommended;
 import me.drakeet.support.about.extension.RecommendedLoaderDelegate;
 import me.drakeet.support.about.provided.PicassoImageLoader;
 
@@ -25,14 +31,14 @@ import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_YES;
 @SuppressLint("SetTextI18n")
 @SuppressWarnings("SpellCheckingInspection")
 public class AboutActivity extends AbsAboutActivity
-    implements OnRecommendedClickedListener, OnContributorClickListener {
+    implements OnRecommendedClickedListener, OnContributorClickedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setImageLoader(new PicassoImageLoader());
         setOnRecommendedClickedListener(this);
-        setOnContributorClickListener(this);
+        setOnContributorClickedListener(this);
     }
 
 
@@ -116,12 +122,11 @@ public class AboutActivity extends AbsAboutActivity
 
 
     @Override
-    public boolean onContributorClick(@NonNull View itemView, @NonNull Contributor contributor) {
+    public boolean onContributorClicked(@NonNull View itemView, @NonNull Contributor contributor) {
         if (contributor.name.equals("小艾大人")) {
             Toast.makeText(this, "onContributorClick: " + contributor.name, Toast.LENGTH_SHORT).show();
             return true;
         }
         return false;
     }
-
 }

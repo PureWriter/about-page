@@ -9,5 +9,6 @@ import android.view.View;
  */
 public interface OnRecommendedClickedListener {
 
-    @CheckResult boolean onRecommendedClicked(@NonNull View itemView, @NonNull Recommended recommended);
+    @CheckResult
+    boolean onRecommendedClicked(@NonNull View itemView, @NonNull Recommended recommended);
 }

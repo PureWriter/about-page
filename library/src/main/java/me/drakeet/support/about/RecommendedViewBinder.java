@@ -20,6 +20,7 @@ import me.drakeet.multitype.ItemViewBinder;
 /**
  * @author drakeet
  */
+@SuppressWarnings("WeakerAccess")
 public class RecommendedViewBinder extends ItemViewBinder<Recommended, RecommendedViewBinder.ViewHolder> {
 
     private static final String TAG = "about-page";
@@ -53,7 +54,7 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
         public TextView description;
         public Recommended recommended;
         private @Nullable BottomSheetDialog bottomSheet;
-        private @NonNull final AbsAboutActivity activity;
+        protected @NonNull final AbsAboutActivity activity;
 
 
         public ViewHolder(View itemView, @NonNull AbsAboutActivity activity) {

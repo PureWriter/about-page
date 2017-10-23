@@ -16,8 +16,8 @@ import static android.net.Uri.parse;
 /**
  * @author drakeet
  */
-public class ContributorViewBinder
-    extends ItemViewBinder<Contributor, ContributorViewBinder.ViewHolder> {
+@SuppressWarnings("WeakerAccess")
+public class ContributorViewBinder extends ItemViewBinder<Contributor, ContributorViewBinder.ViewHolder> {
 
     private @NonNull final AbsAboutActivity activity;
 
@@ -63,8 +63,8 @@ public class ContributorViewBinder
 
         @Override
         public void onClick(View v) {
-            OnContributorClickListener listener = activity.getOnContributorClickListener();
-            if (listener != null && listener.onContributorClick(v, data)) {
+            OnContributorClickedListener listener = activity.getOnContributorClickedListener();
+            if (listener != null && listener.onContributorClicked(v, data)) {
                 return;
             }
             if (data.url != null) {

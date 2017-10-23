@@ -4,9 +4,8 @@ import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.view.View;
 
-public interface OnContributorClickListener {
+public interface OnContributorClickedListener {
 
     @CheckResult
-    boolean onContributorClick(@NonNull View itemView, @NonNull Contributor contributor);
-
+    boolean onContributorClicked(@NonNull View itemView, @NonNull Contributor contributor);
 }
