@@ -84,12 +84,12 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_page_main_activity);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        ImageView icon = (ImageView) findViewById(R.id.icon);
-        slogan = (TextView) findViewById(R.id.slogan);
-        version = (TextView) findViewById(R.id.version);
-        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        headerContentLayout = (LinearLayout) findViewById(R.id.header_content_layout);
+        toolbar = findViewById(R.id.toolbar);
+        ImageView icon = findViewById(R.id.icon);
+        slogan = findViewById(R.id.slogan);
+        version = findViewById(R.id.version);
+        collapsingToolbar = findViewById(R.id.collapsing_toolbar);
+        headerContentLayout = findViewById(R.id.header_content_layout);
         onTitleViewCreated(collapsingToolbar);
         onCreateHeader(icon, slogan, version);
 
@@ -100,7 +100,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
         onApplyPresetAttrs();
-        recyclerView = (RecyclerView) findViewById(R.id.list);
+        recyclerView = findViewById(R.id.list);
     }
 
 

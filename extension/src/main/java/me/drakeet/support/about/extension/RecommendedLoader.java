@@ -65,7 +65,8 @@ public class RecommendedLoader {
                     @Override
                     public void run() {
                         if (showDefaultCategory) {
-                            items.add(finalIndex, new Category(activity.getString(R.string.about_page_app_links)));
+                            // TODO: 2017/11/12 i18n
+                            items.add(finalIndex, new Category(activity.getString(R.string.about_page_app_links), R.drawable.about_page_ic_info, "这是什么？"));
                             items.addAll(finalIndex + 1, recommendedResponse.data);
                         } else {
                             items.addAll(finalIndex, recommendedResponse.data);

@@ -35,8 +35,8 @@ public class LicenseViewBinder extends ItemViewBinder<License, LicenseViewBinder
 
         public ViewHolder(View itemView) {
             super(itemView);
-            content = (TextView) itemView.findViewById(R.id.content);
-            hint = (TextView) itemView.findViewById(R.id.hint);
+            content = itemView.findViewById(R.id.content);
+            hint = itemView.findViewById(R.id.hint);
         }
     }
 

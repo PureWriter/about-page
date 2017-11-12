@@ -60,11 +60,11 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
         public ViewHolder(View itemView, @NonNull AbsAboutActivity activity) {
             super(itemView);
             this.activity = activity;
-            icon = (ImageView) itemView.findViewById(R.id.icon);
-            name = (TextView) itemView.findViewById(R.id.name);
-            packageName = (TextView) itemView.findViewById(R.id.packageName);
-            sizeView = (TextView) itemView.findViewById(R.id.size);
-            description = (TextView) itemView.findViewById(R.id.description);
+            icon = itemView.findViewById(R.id.icon);
+            name = itemView.findViewById(R.id.name);
+            packageName = itemView.findViewById(R.id.packageName);
+            sizeView = itemView.findViewById(R.id.size);
+            description = itemView.findViewById(R.id.description);
             itemView.setOnClickListener(this);
         }
 

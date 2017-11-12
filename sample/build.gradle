@@ -2,7 +2,7 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    buildToolsVersion "27.0.0"
     defaultConfig {
         applicationId "me.drakeet.support.about.sample"
         minSdkVersion 14
@@ -20,14 +20,14 @@ android {
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    testCompile 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    testImplementation 'junit:junit:4.12'
 
-    compile project(':library')
+    implementation project(':library')
 
     // optional
-    compile project(':extension')
+    implementation project(':extension')
 
     // for using the PicassoImageLoader
-    compile 'com.squareup.picasso:picasso:2.5.2'
+    implementation 'com.squareup.picasso:picasso:2.5.2'
 }

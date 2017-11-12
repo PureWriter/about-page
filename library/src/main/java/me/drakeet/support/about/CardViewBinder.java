@@ -34,7 +34,7 @@ public class CardViewBinder extends ItemViewBinder<Card, CardViewBinder.ViewHold
 
         public ViewHolder(View itemView) {
             super(itemView);
-            content = (TextView) itemView.findViewById(R.id.content);
+            content = itemView.findViewById(R.id.content);
         }
     }
 

@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/AboutPage.Item.Category"
-    android:id="@+id/category"
-    tools:text="value"/>
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_vertical">
+
+    <TextView
+        style="@style/AboutPage.Item.Category"
+        android:id="@+id/category"
+        android:layout_weight="1"
+        tools:text="value"/>
+
+    <android.support.v7.widget.AppCompatImageView
+        android:id="@+id/right_icon"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:background="?selectableItemBackground"
+        android:scaleType="centerInside"/>
+
+    <TextView
+        style="@style/AboutPage.Item.Category"
+        android:id="@+id/right_text"
+        android:layout_width="wrap_content"
+        android:paddingLeft="2dp"
+        android:paddingRight="8dp"
+        android:background="?selectableItemBackground"
+        android:textSize="12sp"/>
+
+</LinearLayout>

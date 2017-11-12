@@ -54,9 +54,9 @@ public class ContributorViewBinder extends ItemViewBinder<Contributor, Contribut
         public ViewHolder(View itemView, @NonNull AbsAboutActivity activity) {
             super(itemView);
             this.activity = activity;
-            avatar = (ImageView) itemView.findViewById(R.id.avatar);
-            name = (TextView) itemView.findViewById(R.id.name);
-            desc = (TextView) itemView.findViewById(R.id.desc);
+            avatar = itemView.findViewById(R.id.avatar);
+            name = itemView.findViewById(R.id.name);
+            desc = itemView.findViewById(R.id.desc);
             itemView.setOnClickListener(this);
         }
 
