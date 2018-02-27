@@ -15,11 +15,11 @@ In your `build.gradle`:
 
 ```groovy
 dependencies {
-    implementation 'me.drakeet.support:about:2.1.0'
+    implementation 'me.drakeet.support:about:2.1.1'
     implementation 'me.drakeet.multitype:multitype:3.4.4'
     
     // extension for loading our host Android Links data
-    // implementation 'me.drakeet.support:about-extension:2.1.0'
+    // implementation 'me.drakeet.support:about-extension:2.1.1'
     // optional: for using the PicassoImageLoader
     // implementation 'com.squareup.picasso:picasso:2.5.2'
     // optional: for using the GlideImageLoader
