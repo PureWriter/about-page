@@ -26,24 +26,32 @@ public class RecommendedLoaderDelegate implements LifecycleObserver {
     private RecommendedLoader loader;
     private boolean showDefaultCategory;
     private Call call;
+    private JsonConverter jsonConverter;
 
 
-    private RecommendedLoaderDelegate(@NonNull AbsAboutActivity aboutActivity, int index, boolean showDefaultCategory) {
+    private RecommendedLoaderDelegate(@NonNull AbsAboutActivity aboutActivity, int index, boolean showDefaultCategory, @NonNull JsonConverter jsonConverter) {
         this.aboutActivity = aboutActivity;
         this.index = index;
         this.showDefaultCategory = showDefaultCategory;
+        this.jsonConverter = jsonConverter;
     }
 
 
-    public static void attach(@NonNull final AbsAboutActivity activity, int index) {
-        attach(activity, index, true);
+    public static void attach(@NonNull AbsAboutActivity activity, int index, @NonNull JsonConverter jsonConverter) {
+        attach(activity, index, true, jsonConverter);
     }
 
 
-    public static void attach(@NonNull final AbsAboutActivity activity, int index, boolean showDefaultCategory) {
-        RecommendedLoaderDelegate delegate = new RecommendedLoaderDelegate(activity, index, showDefaultCategory);
+    public static void attach(@NonNull AbsAboutActivity activity, int index, boolean showDefaultCategory, @NonNull JsonConverter jsonConverter) {
+        RecommendedLoaderDelegate delegate = new RecommendedLoaderDelegate(activity, index, showDefaultCategory, jsonConverter);
         activity.getLifecycle().addObserver(delegate);
         delegate.start();
+    }
+
+
+    private void start() {
+        loader = RecommendedLoader.getInstance();
+        call = loader.loadInto(aboutActivity, index, showDefaultCategory, jsonConverter);
     }
 
 
@@ -52,11 +60,5 @@ public class RecommendedLoaderDelegate implements LifecycleObserver {
         if (call != null) {
             call.cancel();
         }
-    }
-
-
-    private void start() {
-        loader = RecommendedLoader.getInstance();
-        call = loader.loadInto(aboutActivity, index, showDefaultCategory);
     }
 }

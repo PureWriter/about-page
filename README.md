@@ -15,25 +15,19 @@ In your `build.gradle`:
 
 ```groovy
 dependencies {
-    compile 'me.drakeet.support:about:2.0.2'
-    compile 'me.drakeet.multitype:multitype:3.3.3'
+    implementation 'me.drakeet.support:about:2.1.1'
+    implementation 'me.drakeet.multitype:multitype:3.4.4'
+    
     // extension for loading our host Android Links data
-    // compile 'me.drakeet.support:about-extension:2.0.2'
-    // for using the PicassoImageLoader
-    // compile 'com.squareup.picasso:picasso:2.5.2'
-}
-```
-
-If you are using `com.android.tools.build:gradle:3.+`, use this instead:
-
-```groovy
-dependencies {
-    implementation 'me.drakeet.support:about:2.0.2'
-    implementation 'me.drakeet.multitype:multitype:3.3.3'
-    // extension for loading our host Android Links data
-    // implementation 'me.drakeet.support:about-extension:2.0.2'
-    // for using the PicassoImageLoader
+    // implementation 'me.drakeet.support:about-extension:2.1.1'
+    // optional: for using the PicassoImageLoader
     // implementation 'com.squareup.picasso:picasso:2.5.2'
+    // optional: for using the GlideImageLoader
+    // implementation 'com.github.bumptech.glide:glide:4.6.1'
+    // optional: for using the GsonJsonConverter
+    // implementation 'com.google.code.gson:gson:2.8.2'
+    // optional: for using the MoshiJsonConverter
+    // implementation 'com.squareup.moshi:moshi:1.5.0'
 }
 ```
 

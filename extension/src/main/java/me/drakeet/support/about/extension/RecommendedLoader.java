@@ -1,9 +1,9 @@
 package me.drakeet.support.about.extension;
 
+import android.annotation.SuppressLint;
 import android.support.annotation.CheckResult;
 import android.support.annotation.NonNull;
 import android.util.Log;
-import com.google.gson.Gson;
 import java.io.IOException;
 import java.util.List;
 import me.drakeet.support.about.AbsAboutActivity;
@@ -17,6 +17,8 @@ import okhttp3.Response;
 /**
  * @author drakeet
  */
+@SuppressLint("LogNotTimber")
+@SuppressWarnings("WeakerAccess")
 public class RecommendedLoader {
 
     private static final String TAG = "RecommendedLoader";
@@ -30,12 +32,12 @@ public class RecommendedLoader {
     }
 
 
-    public @NonNull Call loadInto(@NonNull final AbsAboutActivity activity, int index) {
-        return loadInto(activity, index, true);
+    public @NonNull Call loadInto(@NonNull final AbsAboutActivity activity, int index, @NonNull JsonConverter jsonConverter) {
+        return loadInto(activity, index, true, jsonConverter);
     }
 
 
-    public @NonNull Call loadInto(@NonNull final AbsAboutActivity activity, int index, final boolean showDefaultCategory) {
+    public @NonNull Call loadInto(@NonNull final AbsAboutActivity activity, int index, final boolean showDefaultCategory, @NonNull final JsonConverter jsonConverter) {
         final List<Object> items = activity.getItems();
         final int finalIndex;
         if (index > items.size()) {
@@ -56,9 +58,13 @@ public class RecommendedLoader {
                 try {
                     @SuppressWarnings("ConstantConditions")
                     String body = response.body().string();
-                    recommendedResponse = new Gson().fromJson(body, RecommendedResponse.class);
+                    recommendedResponse = jsonConverter.fromJson(body, RecommendedResponse.class);
                 } catch (Throwable throwable) {
                     Log.e(TAG, "Json parse failed", throwable);
+                    return;
+                }
+                if (recommendedResponse == null) {
+                    Log.e(TAG, "Json parse failed with null response");
                     return;
                 }
                 activity.runOnUiThread(new Runnable() {
