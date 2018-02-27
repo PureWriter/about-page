@@ -20,6 +20,7 @@ import me.drakeet.support.about.OnContributorClickedListener;
 import me.drakeet.support.about.OnRecommendedClickedListener;
 import me.drakeet.support.about.Recommended;
 import me.drakeet.support.about.extension.RecommendedLoaderDelegate;
+import me.drakeet.support.about.extension.provided.MoshiJsonConverter;
 import me.drakeet.support.about.provided.PicassoImageLoader;
 
 import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_NO;
@@ -80,7 +81,7 @@ public class AboutActivity extends AbsAboutActivity
             "2017-10-09 16:46:57", 2.64, true)
         );
         // Load more Recommended items from remote server asynchronously
-        RecommendedLoaderDelegate.attach(this, items.size());
+        RecommendedLoaderDelegate.attach(this, items.size(), new MoshiJsonConverter() /* or new GsonJsonConverter() */);
         // or
         // RecommendedLoader.getInstance().loadInto(this, items.size());
 

@@ -3,13 +3,13 @@ apply from: '../library/gradle-mvn-push.gradle'
 apply plugin: 'jacoco'
 
 android {
-    compileSdkVersion 26
-    buildToolsVersion "26.0.2"
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
 
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 26
+        targetSdkVersion 27
         versionCode 4
         versionName "2.0.2"
 
@@ -22,16 +22,22 @@ android {
             consumerProguardFile 'proguard-rules.pro'
         }
     }
+
+    // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
+    libraryVariants.all {
+        it.generateBuildConfig.enabled = false
+    }
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.android.support:appcompat-v7:26.1.0'
-    testCompile 'junit:junit:4.12'
-    androidTestCompile('com.android.support.test.espresso:espresso-core:3.0.1', {
+    implementation 'com.android.support:appcompat-v7:27.0.2'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.squareup.okhttp3:okhttp:3.9.0'
-    compile 'com.google.code.gson:gson:2.8.2'
-    provided project(':library')
+    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
+    implementation 'me.drakeet.multitype:multitype:3.4.4'
+    compileOnly 'com.google.code.gson:gson:2.8.2'
+    compileOnly 'com.squareup.moshi:moshi:1.5.0'
+    compileOnly project(':library')
 }
