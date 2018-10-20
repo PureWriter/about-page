@@ -5,16 +5,16 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.BottomSheetDialog;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.bottomsheet.BottomSheetDialog;
 import me.drakeet.multitype.ItemViewBinder;
 
 /**
@@ -60,11 +60,11 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
         public ViewHolder(View itemView, @NonNull AbsAboutActivity activity) {
             super(itemView);
             this.activity = activity;
-            icon = (ImageView) itemView.findViewById(R.id.icon);
-            name = (TextView) itemView.findViewById(R.id.name);
-            packageName = (TextView) itemView.findViewById(R.id.packageName);
-            sizeView = (TextView) itemView.findViewById(R.id.size);
-            description = (TextView) itemView.findViewById(R.id.description);
+            icon = itemView.findViewById(R.id.icon);
+            name = itemView.findViewById(R.id.name);
+            packageName = itemView.findViewById(R.id.packageName);
+            sizeView = itemView.findViewById(R.id.size);
+            description = itemView.findViewById(R.id.description);
             itemView.setOnClickListener(this);
         }
 

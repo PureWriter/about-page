@@ -13,19 +13,21 @@ From the [PureWriter](https://play.google.com/store/apps/details?id=com.drakeet.
 
 In your `build.gradle`:
 
+_This library has been rebuilt based on androidx. If you are still using the android support library, please use version `about:2.1.1`, `about-extension:2.1.1` and `multitype:3.4.4`._
+
 ```groovy
 dependencies {
-    implementation 'me.drakeet.support:about:2.1.1'
-    implementation 'me.drakeet.multitype:multitype:3.4.4'
+    implementation 'me.drakeet.support:about:2.2.0'
+    implementation 'me.drakeet.multitype:multitype:3.5.0'
     
     // extension for loading our host Android Links data
-    // implementation 'me.drakeet.support:about-extension:2.1.1'
+    // implementation 'me.drakeet.support:about-extension:2.2.0'
     // optional: for using the PicassoImageLoader
     // implementation 'com.squareup.picasso:picasso:2.5.2'
     // optional: for using the GlideImageLoader
-    // implementation 'com.github.bumptech.glide:glide:4.6.1'
+    // implementation 'com.github.bumptech.glide:glide:4.8.0'
     // optional: for using the GsonJsonConverter
-    // implementation 'com.google.code.gson:gson:2.8.2'
+    // implementation 'com.google.code.gson:gson:2.8.5'
     // optional: for using the MoshiJsonConverter
     // implementation 'com.squareup.moshi:moshi:1.5.0'
 }
@@ -42,7 +44,6 @@ public class AboutActivity extends AbsAboutActivity {
         slogan.setText("About Page By drakeet");
         version.setText("v" + BuildConfig.VERSION_NAME);
     }
-
 
     @Override
     protected void onItemsCreated(@NonNull Items items) {

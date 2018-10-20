@@ -2,14 +2,14 @@ package me.drakeet.support.about.sample;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatDelegate;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatDelegate;
 import me.drakeet.multitype.Items;
 import me.drakeet.support.about.AbsAboutActivity;
 import me.drakeet.support.about.Card;
@@ -23,8 +23,8 @@ import me.drakeet.support.about.extension.RecommendedLoaderDelegate;
 import me.drakeet.support.about.extension.provided.MoshiJsonConverter;
 import me.drakeet.support.about.provided.PicassoImageLoader;
 
-import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_NO;
-import static android.support.v7.app.AppCompatDelegate.MODE_NIGHT_YES;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_NO;
+import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 
 /**
  * @author drakeet

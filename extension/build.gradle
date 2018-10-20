@@ -3,17 +3,15 @@ apply from: '../library/gradle-mvn-push.gradle'
 apply plugin: 'jacoco'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion "27.0.3"
-
+    compileSdkVersion 28
 
     defaultConfig {
         minSdkVersion 14
-        targetSdkVersion 27
-        versionCode 6
-        versionName "2.1.1"
+        targetSdkVersion 28
+        versionCode 7
+        versionName "2.2.0"
 
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -30,14 +28,14 @@ android {
 }
 
 dependencies {
-    implementation 'com.android.support:appcompat-v7:27.0.2'
+    implementation 'androidx.appcompat:appcompat:1.0.0'
     testImplementation 'junit:junit:4.12'
-    androidTestImplementation('com.android.support.test.espresso:espresso-core:3.0.1', {
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-beta02', {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    implementation 'com.squareup.okhttp3:okhttp:3.10.0'
-    implementation 'me.drakeet.multitype:multitype:3.4.4'
-    compileOnly 'com.google.code.gson:gson:2.8.2'
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
+    implementation 'me.drakeet.multitype:multitype:3.5.0'
+    compileOnly 'com.google.code.gson:gson:2.8.5'
     compileOnly 'com.squareup.moshi:moshi:1.5.0'
     compileOnly project(':library')
 }

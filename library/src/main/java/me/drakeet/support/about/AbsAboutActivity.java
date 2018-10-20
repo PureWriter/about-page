@@ -3,23 +3,23 @@ package me.drakeet.support.about;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.ViewCompat;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.RecyclerView;
+import com.google.android.material.appbar.CollapsingToolbarLayout;
 import me.drakeet.multitype.Items;
 import me.drakeet.multitype.MultiTypeAdapter;
 
@@ -84,12 +84,12 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_page_main_activity);
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        ImageView icon = (ImageView) findViewById(R.id.icon);
-        slogan = (TextView) findViewById(R.id.slogan);
-        version = (TextView) findViewById(R.id.version);
-        collapsingToolbar = (CollapsingToolbarLayout) findViewById(R.id.collapsing_toolbar);
-        headerContentLayout = (LinearLayout) findViewById(R.id.header_content_layout);
+        toolbar = findViewById(R.id.toolbar);
+        ImageView icon = findViewById(R.id.icon);
+        slogan = findViewById(R.id.slogan);
+        version = findViewById(R.id.version);
+        collapsingToolbar = findViewById(R.id.collapsing_toolbar);
+        headerContentLayout = findViewById(R.id.header_content_layout);
         onTitleViewCreated(collapsingToolbar);
         onCreateHeader(icon, slogan, version);
 
@@ -100,7 +100,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
             actionBar.setDisplayShowHomeEnabled(true);
         }
         onApplyPresetAttrs();
-        recyclerView = (RecyclerView) findViewById(R.id.list);
+        recyclerView = findViewById(R.id.list);
     }
 
 

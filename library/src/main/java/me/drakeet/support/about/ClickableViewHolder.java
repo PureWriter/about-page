@@ -2,9 +2,9 @@ package me.drakeet.support.about;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import androidx.annotation.Nullable;
+import androidx.recyclerview.widget.RecyclerView;
 
 import static android.net.Uri.parse;
 

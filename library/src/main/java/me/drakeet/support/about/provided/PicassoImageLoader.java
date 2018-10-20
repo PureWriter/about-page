@@ -1,6 +1,6 @@
 package me.drakeet.support.about.provided;
 
-import android.support.annotation.NonNull;
+import androidx.annotation.NonNull;
 import android.widget.ImageView;
 import com.squareup.picasso.Picasso;
 import me.drakeet.support.about.ImageLoader;
