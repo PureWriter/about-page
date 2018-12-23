@@ -67,6 +67,10 @@ public class RecommendedLoader {
                     Log.e(TAG, "Json parse failed with null response");
                     return;
                 }
+                if (recommendedResponse.data == null) {
+                    Log.e(TAG, "Json parse failed with null data(List<Recommended>)");
+                    return;
+                }
                 activity.runOnUiThread(new Runnable() {
                     @Override
                     public void run() {
