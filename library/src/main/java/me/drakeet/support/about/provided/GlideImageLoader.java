@@ -10,8 +10,8 @@ import me.drakeet.support.about.ImageLoader;
  */
 public class GlideImageLoader implements ImageLoader {
 
-    @Override
-    public void load(@NonNull ImageView imageView, @NonNull String url) {
-        Glide.with(imageView.getContext()).load(url).into(imageView);
-    }
+  @Override
+  public void load(@NonNull ImageView imageView, @NonNull String url) {
+    Glide.with(imageView.getContext()).load(url).into(imageView);
+  }
 }

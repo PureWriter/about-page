@@ -9,41 +9,39 @@ import androidx.annotation.NonNull;
 @Keep
 public class Recommended {
 
-    public int id;
-    public String appName;
-    public String iconUrl;
-    public String packageName;
-    public String description;
-    public String downloadUrl;
-    public String createdTime;
-    public String updatedTime;
-    public double downloadSize;
-    public boolean openWithGooglePlay;
+  public int id;
+  public String appName;
+  public String iconUrl;
+  public String packageName;
+  public String description;
+  public String downloadUrl;
+  public String createdTime;
+  public String updatedTime;
+  public double downloadSize;
+  public boolean openWithGooglePlay;
 
+  public Recommended() {}
 
-    public Recommended() {}
-
-
-    public Recommended(
-        int id,
-        @NonNull String appName,
-        @NonNull String iconUrl,
-        @NonNull String packageName,
-        @NonNull String description,
-        @NonNull String downloadUrl,
-        @NonNull String createdTime,
-        @NonNull String updatedTime,
-        double downloadSize,
-        boolean openWithGooglePlay) {
-        this.id = id;
-        this.appName = appName;
-        this.iconUrl = iconUrl;
-        this.packageName = packageName;
-        this.description = description;
-        this.downloadUrl = downloadUrl;
-        this.createdTime = createdTime;
-        this.updatedTime = updatedTime;
-        this.downloadSize = downloadSize;
-        this.openWithGooglePlay = openWithGooglePlay;
-    }
+  public Recommended(
+      int id,
+      @NonNull String appName,
+      @NonNull String iconUrl,
+      @NonNull String packageName,
+      @NonNull String description,
+      @NonNull String downloadUrl,
+      @NonNull String createdTime,
+      @NonNull String updatedTime,
+      double downloadSize,
+      boolean openWithGooglePlay) {
+    this.id = id;
+    this.appName = appName;
+    this.iconUrl = iconUrl;
+    this.packageName = packageName;
+    this.description = description;
+    this.downloadUrl = downloadUrl;
+    this.createdTime = createdTime;
+    this.updatedTime = updatedTime;
+    this.downloadSize = downloadSize;
+    this.openWithGooglePlay = openWithGooglePlay;
+  }
 }

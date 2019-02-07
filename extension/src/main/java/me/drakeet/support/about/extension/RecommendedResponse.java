@@ -10,6 +10,6 @@ import me.drakeet.support.about.Recommended;
 @Keep
 public class RecommendedResponse {
 
-    public int code;
-    public List<Recommended> data;
+  public int code;
+  public List<Recommended> data;
 }

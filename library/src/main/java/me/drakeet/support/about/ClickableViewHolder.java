@@ -13,28 +13,26 @@ import static android.net.Uri.parse;
  */
 public class ClickableViewHolder extends RecyclerView.ViewHolder {
 
-    private @Nullable String url;
+  private @Nullable String url;
 
+  public ClickableViewHolder(View itemView) {
+    super(itemView);
+    itemView.setOnClickListener(new View.OnClickListener() {
+      @Override public void onClick(View v) {
+        if (url != null) {
+          Intent intent = new Intent(Intent.ACTION_VIEW);
+          intent.setData(parse(url));
+          try {
+            v.getContext().startActivity(intent);
+          } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+          }
+        }
+      }
+    });
+  }
 
-    public ClickableViewHolder(View itemView) {
-        super(itemView);
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override public void onClick(View v) {
-                if (url != null) {
-                    Intent intent = new Intent(Intent.ACTION_VIEW);
-                    intent.setData(parse(url));
-                    try {
-                        v.getContext().startActivity(intent);
-                    } catch (ActivityNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        });
-    }
-
-
-    public void setURL(@Nullable String url) {
-        this.url = url;
-    }
+  public void setURL(@Nullable String url) {
+    this.url = url;
+  }
 }

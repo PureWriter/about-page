@@ -3,40 +3,35 @@ apply from: './gradle-mvn-push.gradle'
 apply plugin: 'jacoco'
 
 android {
-    compileSdkVersion 28
-    resourcePrefix "about_page"
+  compileSdkVersion 28
+  resourcePrefix "about_page"
 
-    defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 28
-        versionCode 75
-        versionName "2.2.0"
+  defaultConfig {
+    minSdkVersion 14
+    targetSdkVersion 28
+    versionCode 75
+    versionName "2.2.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+  }
+
+  buildTypes {
+    release {
+      minifyEnabled false
+      consumerProguardFile 'proguard-rules.pro'
     }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            consumerProguardFile 'proguard-rules.pro'
-        }
-    }
-
-    // TODO replace with https://issuetracker.google.com/issues/72050365 once released.
-    libraryVariants.all {
-        it.generateBuildConfig.enabled = false
-    }
+  }
 }
 
 dependencies {
-    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-beta02', {
-        exclude group: 'com.android.support', module: 'support-annotations'
-    })
-    implementation 'androidx.appcompat:appcompat:1.0.0'
-    implementation 'androidx.recyclerview:recyclerview:1.0.0'
-    implementation 'com.google.android.material:material:1.0.0'
-    implementation 'me.drakeet.multitype:multitype:3.5.0'
-    compileOnly 'com.squareup.picasso:picasso:2.5.2'
-    compileOnly 'com.github.bumptech.glide:glide:4.8.0'
-    testImplementation 'junit:junit:4.12'
+  androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-beta02', {
+    exclude group: 'com.android.support', module: 'support-annotations'
+  })
+  implementation 'androidx.appcompat:appcompat:1.0.2'
+  implementation 'androidx.recyclerview:recyclerview:1.0.0'
+  implementation 'com.google.android.material:material:1.0.0'
+  implementation 'me.drakeet.multitype:multitype:4.0.0-alpha2'
+  compileOnly 'com.squareup.picasso:picasso:2.5.2'
+  compileOnly 'com.github.bumptech.glide:glide:4.8.0'
+  testImplementation 'junit:junit:4.12'
 }
