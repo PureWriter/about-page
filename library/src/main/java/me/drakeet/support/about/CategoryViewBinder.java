@@ -14,33 +14,29 @@ import me.drakeet.multitype.ItemViewBinder;
 @SuppressWarnings("WeakerAccess")
 public class CategoryViewBinder extends ItemViewBinder<Category, CategoryViewBinder.ViewHolder> {
 
-    @NonNull @Override
-    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View root = inflater.inflate(R.layout.about_page_item_category, parent, false);
-        return new ViewHolder(root);
+  @NonNull @Override
+  public ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    View root = inflater.inflate(R.layout.about_page_item_category, parent, false);
+    return new ViewHolder(root);
+  }
+
+  @Override
+  public void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Category category) {
+    holder.category.setText(category.value);
+  }
+
+  public static class ViewHolder extends RecyclerView.ViewHolder {
+
+    public TextView category;
+
+    public ViewHolder(View itemView) {
+      super(itemView);
+      category = (TextView) itemView.findViewById(R.id.category);
     }
+  }
 
-
-    @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Category category) {
-        holder.category.setText(category.value);
-    }
-
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        public TextView category;
-
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-            category = (TextView) itemView.findViewById(R.id.category);
-        }
-    }
-
-
-    @Override
-    protected long getItemId(@NonNull Category item) {
-        return item.hashCode();
-    }
+  @Override
+  public long getItemId(@NonNull Category item) {
+    return item.hashCode();
+  }
 }

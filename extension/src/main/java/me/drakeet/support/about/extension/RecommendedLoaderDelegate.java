@@ -21,44 +21,39 @@ import okhttp3.Call;
  */
 public class RecommendedLoaderDelegate implements LifecycleObserver {
 
-    private final @NonNull AbsAboutActivity aboutActivity;
-    private final int index;
-    private RecommendedLoader loader;
-    private boolean showDefaultCategory;
-    private Call call;
-    private JsonConverter jsonConverter;
+  private final @NonNull AbsAboutActivity aboutActivity;
+  private final int index;
+  private RecommendedLoader loader;
+  private boolean showDefaultCategory;
+  private Call call;
+  private JsonConverter jsonConverter;
 
+  private RecommendedLoaderDelegate(@NonNull AbsAboutActivity aboutActivity, int index, boolean showDefaultCategory, @NonNull JsonConverter jsonConverter) {
+    this.aboutActivity = aboutActivity;
+    this.index = index;
+    this.showDefaultCategory = showDefaultCategory;
+    this.jsonConverter = jsonConverter;
+  }
 
-    private RecommendedLoaderDelegate(@NonNull AbsAboutActivity aboutActivity, int index, boolean showDefaultCategory, @NonNull JsonConverter jsonConverter) {
-        this.aboutActivity = aboutActivity;
-        this.index = index;
-        this.showDefaultCategory = showDefaultCategory;
-        this.jsonConverter = jsonConverter;
+  public static void attach(@NonNull AbsAboutActivity activity, int index, @NonNull JsonConverter jsonConverter) {
+    attach(activity, index, true, jsonConverter);
+  }
+
+  public static void attach(@NonNull AbsAboutActivity activity, int index, boolean showDefaultCategory, @NonNull JsonConverter jsonConverter) {
+    RecommendedLoaderDelegate delegate = new RecommendedLoaderDelegate(activity, index, showDefaultCategory, jsonConverter);
+    activity.getLifecycle().addObserver(delegate);
+    delegate.start();
+  }
+
+  private void start() {
+    loader = RecommendedLoader.getInstance();
+    call = loader.loadInto(aboutActivity, index, showDefaultCategory, jsonConverter);
+  }
+
+  @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
+  void onDestroy() {
+    if (call != null) {
+      call.cancel();
     }
-
-
-    public static void attach(@NonNull AbsAboutActivity activity, int index, @NonNull JsonConverter jsonConverter) {
-        attach(activity, index, true, jsonConverter);
-    }
-
-
-    public static void attach(@NonNull AbsAboutActivity activity, int index, boolean showDefaultCategory, @NonNull JsonConverter jsonConverter) {
-        RecommendedLoaderDelegate delegate = new RecommendedLoaderDelegate(activity, index, showDefaultCategory, jsonConverter);
-        activity.getLifecycle().addObserver(delegate);
-        delegate.start();
-    }
-
-
-    private void start() {
-        loader = RecommendedLoader.getInstance();
-        call = loader.loadInto(aboutActivity, index, showDefaultCategory, jsonConverter);
-    }
-
-
-    @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)
-    void onDestroy() {
-        if (call != null) {
-            call.cancel();
-        }
-    }
+  }
 }

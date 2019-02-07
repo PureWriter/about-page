@@ -20,7 +20,8 @@ import androidx.core.content.ContextCompat;
 import androidx.core.view.ViewCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.material.appbar.CollapsingToolbarLayout;
-import me.drakeet.multitype.Items;
+import java.util.ArrayList;
+import java.util.List;
 import me.drakeet.multitype.MultiTypeAdapter;
 
 /**
@@ -28,245 +29,215 @@ import me.drakeet.multitype.MultiTypeAdapter;
  */
 public abstract class AbsAboutActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
-    private CollapsingToolbarLayout collapsingToolbar;
-    private LinearLayout headerContentLayout;
+  private Toolbar toolbar;
+  private CollapsingToolbarLayout collapsingToolbar;
+  private LinearLayout headerContentLayout;
 
-    private Items items;
-    private MultiTypeAdapter adapter;
-    private TextView slogan, version;
-    private RecyclerView recyclerView;
-    private @Nullable ImageLoader imageLoader;
-    private boolean initialized;
-    private @Nullable OnRecommendedClickedListener onRecommendedClickedListener;
-    private @Nullable OnContributorClickedListener onContributorClickedListener;
+  private List<Object> items;
+  private MultiTypeAdapter adapter;
+  private TextView slogan, version;
+  private RecyclerView recyclerView;
+  private @Nullable ImageLoader imageLoader;
+  private boolean initialized;
+  private @Nullable OnRecommendedClickedListener onRecommendedClickedListener;
+  private @Nullable OnContributorClickedListener onContributorClickedListener;
 
+  protected abstract void onCreateHeader(@NonNull ImageView icon, @NonNull TextView slogan, @NonNull TextView version);
+  protected abstract void onItemsCreated(@NonNull List<Object> items);
 
-    protected abstract void onCreateHeader(@NonNull ImageView icon, @NonNull TextView slogan, @NonNull TextView version);
-    protected abstract void onItemsCreated(@NonNull Items items);
+  protected void onTitleViewCreated(@NonNull CollapsingToolbarLayout collapsingToolbar) {}
 
-
-    protected void onTitleViewCreated(@NonNull CollapsingToolbarLayout collapsingToolbar) {}
-
-
-    public void setImageLoader(@NonNull ImageLoader imageLoader) {
-        this.imageLoader = imageLoader;
-        if (initialized) {
-            adapter.notifyDataSetChanged();
-        }
+  public void setImageLoader(@NonNull ImageLoader imageLoader) {
+    this.imageLoader = imageLoader;
+    if (initialized) {
+      adapter.notifyDataSetChanged();
     }
+  }
 
+  public @Nullable ImageLoader getImageLoader() {
+    return imageLoader;
+  }
 
-    public @Nullable ImageLoader getImageLoader() {
-        return imageLoader;
+  @Override
+  public final void setContentView(View view) {
+    super.setContentView(view);
+  }
+
+  @Override
+  public final void setContentView(int layoutResID) {
+    super.setContentView(layoutResID);
+  }
+
+  @Override
+  public final void setContentView(View view, ViewGroup.LayoutParams params) {
+    super.setContentView(view, params);
+  }
+
+  @Override
+  protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.about_page_main_activity);
+    toolbar = findViewById(R.id.toolbar);
+    ImageView icon = findViewById(R.id.icon);
+    slogan = findViewById(R.id.slogan);
+    version = findViewById(R.id.version);
+    collapsingToolbar = findViewById(R.id.collapsing_toolbar);
+    headerContentLayout = findViewById(R.id.header_content_layout);
+    onTitleViewCreated(collapsingToolbar);
+    onCreateHeader(icon, slogan, version);
+
+    setSupportActionBar(toolbar);
+    ActionBar actionBar = getSupportActionBar();
+    if (actionBar != null) {
+      actionBar.setDisplayHomeAsUpEnabled(true);
+      actionBar.setDisplayShowHomeEnabled(true);
     }
+    onApplyPresetAttrs();
+    recyclerView = findViewById(R.id.list);
+  }
 
+  @Override @SuppressWarnings("deprecation")
+  protected void onPostCreate(@Nullable Bundle savedInstanceState) {
+    super.onPostCreate(savedInstanceState);
+    adapter = new MultiTypeAdapter();
+    adapter.register(Category.class, new CategoryViewBinder());
+    adapter.register(Card.class, new CardViewBinder());
+    adapter.register(Line.class, new LineViewBinder());
+    adapter.register(Contributor.class, new ContributorViewBinder(this));
+    adapter.register(License.class, new LicenseViewBinder());
+    adapter.register(Recommended.class, new RecommendedViewBinder(this));
+    items = new ArrayList<>();
+    onItemsCreated(items);
+    adapter.setItems(items);
+    adapter.setHasStableIds(true);
+    recyclerView.addItemDecoration(new DividerItemDecoration(adapter));
+    recyclerView.setAdapter(adapter);
+    initialized = true;
+  }
 
-    @Override
-    public final void setContentView(View view) {
-        super.setContentView(view);
+  private void onApplyPresetAttrs() {
+    final TypedArray a = obtainStyledAttributes(R.styleable.AbsAboutActivity);
+    Drawable headerBackground = a.getDrawable(R.styleable.AbsAboutActivity_aboutPageHeaderBackground);
+    if (headerBackground != null) {
+      setHeaderBackground(headerBackground);
     }
-
-
-    @Override
-    public final void setContentView(int layoutResID) {
-        super.setContentView(layoutResID);
+    Drawable headerContentScrim = a.getDrawable(R.styleable.AbsAboutActivity_aboutPageHeaderContentScrim);
+    if (headerContentScrim != null) {
+      setHeaderContentScrim(headerContentScrim);
     }
-
-
-    @Override
-    public final void setContentView(View view, ViewGroup.LayoutParams params) {
-        super.setContentView(view, params);
+    @ColorInt
+    int headerTextColor = a.getColor(R.styleable.AbsAboutActivity_aboutPageHeaderTextColor, -1);
+    if (headerTextColor != -1) {
+      setHeaderTextColor(headerTextColor);
     }
-
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.about_page_main_activity);
-        toolbar = findViewById(R.id.toolbar);
-        ImageView icon = findViewById(R.id.icon);
-        slogan = findViewById(R.id.slogan);
-        version = findViewById(R.id.version);
-        collapsingToolbar = findViewById(R.id.collapsing_toolbar);
-        headerContentLayout = findViewById(R.id.header_content_layout);
-        onTitleViewCreated(collapsingToolbar);
-        onCreateHeader(icon, slogan, version);
-
-        setSupportActionBar(toolbar);
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setDisplayHomeAsUpEnabled(true);
-            actionBar.setDisplayShowHomeEnabled(true);
-        }
-        onApplyPresetAttrs();
-        recyclerView = findViewById(R.id.list);
+    Drawable navigationIcon = a.getDrawable(R.styleable.AbsAboutActivity_aboutPageNavigationIcon);
+    if (navigationIcon != null) {
+      setNavigationIcon(navigationIcon);
     }
+    a.recycle();
+  }
 
+  /**
+   * Use {@link #setHeaderBackground(int)} instead.
+   *
+   * @param resId The resource id of header background
+   */
+  @Deprecated
+  public void setHeaderBackgroundResource(@DrawableRes int resId) {
+    setHeaderBackground(resId);
+  }
 
-    @Override @SuppressWarnings("deprecation")
-    protected void onPostCreate(@Nullable Bundle savedInstanceState) {
-        super.onPostCreate(savedInstanceState);
-        adapter = new MultiTypeAdapter();
-        adapter.register(Category.class, new CategoryViewBinder());
-        adapter.register(Card.class, new CardViewBinder());
-        adapter.register(Line.class, new LineViewBinder());
-        adapter.register(Contributor.class, new ContributorViewBinder(this));
-        adapter.register(License.class, new LicenseViewBinder());
-        adapter.register(Recommended.class, new RecommendedViewBinder(this));
-        items = new Items();
-        onItemsCreated(items);
-        adapter.setItems(items);
-        adapter.setHasStableIds(true);
-        recyclerView.addItemDecoration(new DividerItemDecoration(adapter));
-        recyclerView.setAdapter(adapter);
-        initialized = true;
+  private void setHeaderBackground(@DrawableRes int resId) {
+    setHeaderBackground(ContextCompat.getDrawable(this, resId));
+  }
+
+  private void setHeaderBackground(@NonNull Drawable drawable) {
+    ViewCompat.setBackground(headerContentLayout, drawable);
+  }
+
+  /**
+   * Set the drawable to use for the content scrim from resources. Providing null will disable
+   * the scrim functionality.
+   *
+   * @param drawable the drawable to display
+   */
+  public void setHeaderContentScrim(@NonNull Drawable drawable) {
+    collapsingToolbar.setContentScrim(drawable);
+  }
+
+  public void setHeaderContentScrim(@DrawableRes int resId) {
+    setHeaderContentScrim(ContextCompat.getDrawable(this, resId));
+  }
+
+  public void setHeaderTextColor(@ColorInt int color) {
+    collapsingToolbar.setCollapsedTitleTextColor(color);
+    slogan.setTextColor(color);
+    version.setTextColor(color);
+  }
+
+  /**
+   * Set the icon to use for the toolbar's navigation button.
+   *
+   * @param resId Resource ID of a drawable to set
+   */
+  public void setNavigationIcon(@DrawableRes int resId) {
+    toolbar.setNavigationIcon(resId);
+  }
+
+  public void setNavigationIcon(@NonNull Drawable drawable) {
+    toolbar.setNavigationIcon(drawable);
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(MenuItem menuItem) {
+    if (menuItem.getItemId() == android.R.id.home) {
+      onBackPressed();
     }
+    return super.onOptionsItemSelected(menuItem);
+  }
 
+  @Override
+  public void setTitle(@NonNull CharSequence title) {
+    collapsingToolbar.setTitle(title);
+  }
 
-    private void onApplyPresetAttrs() {
-        final TypedArray a = obtainStyledAttributes(R.styleable.AbsAboutActivity);
-        Drawable headerBackground = a.getDrawable(R.styleable.AbsAboutActivity_aboutPageHeaderBackground);
-        if (headerBackground != null) {
-            setHeaderBackground(headerBackground);
-        }
-        Drawable headerContentScrim = a.getDrawable(R.styleable.AbsAboutActivity_aboutPageHeaderContentScrim);
-        if (headerContentScrim != null) {
-            setHeaderContentScrim(headerContentScrim);
-        }
-        @ColorInt
-        int headerTextColor = a.getColor(R.styleable.AbsAboutActivity_aboutPageHeaderTextColor, -1);
-        if (headerTextColor != -1) {
-            setHeaderTextColor(headerTextColor);
-        }
-        Drawable navigationIcon = a.getDrawable(R.styleable.AbsAboutActivity_aboutPageNavigationIcon);
-        if (navigationIcon != null) {
-            setNavigationIcon(navigationIcon);
-        }
-        a.recycle();
-    }
+  public Toolbar getToolbar() {
+    return toolbar;
+  }
 
+  public CollapsingToolbarLayout getCollapsingToolbar() {
+    return collapsingToolbar;
+  }
 
-    /**
-     * Use {@link #setHeaderBackground(int)} instead.
-     *
-     * @param resId The resource id of header background
-     */
-    @Deprecated
-    public void setHeaderBackgroundResource(@DrawableRes int resId) {
-        setHeaderBackground(resId);
-    }
+  public List<Object> getItems() {
+    return items;
+  }
 
+  public MultiTypeAdapter getAdapter() {
+    return adapter;
+  }
 
-    private void setHeaderBackground(@DrawableRes int resId) {
-        setHeaderBackground(ContextCompat.getDrawable(this, resId));
-    }
+  public TextView getSloganTextView() {
+    return slogan;
+  }
 
+  public TextView getVersionTextView() {
+    return version;
+  }
 
-    private void setHeaderBackground(@NonNull Drawable drawable) {
-        ViewCompat.setBackground(headerContentLayout, drawable);
-    }
+  public void setOnRecommendedClickedListener(@Nullable OnRecommendedClickedListener listener) {
+    this.onRecommendedClickedListener = listener;
+  }
 
+  public @Nullable OnRecommendedClickedListener getOnRecommendedClickedListener() {
+    return onRecommendedClickedListener;
+  }
 
-    /**
-     * Set the drawable to use for the content scrim from resources. Providing null will disable
-     * the scrim functionality.
-     *
-     * @param drawable the drawable to display
-     */
-    public void setHeaderContentScrim(@NonNull Drawable drawable) {
-        collapsingToolbar.setContentScrim(drawable);
-    }
+  public void setOnContributorClickedListener(@Nullable OnContributorClickedListener listener) {
+    this.onContributorClickedListener = listener;
+  }
 
-
-    public void setHeaderContentScrim(@DrawableRes int resId) {
-        setHeaderContentScrim(ContextCompat.getDrawable(this, resId));
-    }
-
-
-    public void setHeaderTextColor(@ColorInt int color) {
-        collapsingToolbar.setCollapsedTitleTextColor(color);
-        slogan.setTextColor(color);
-        version.setTextColor(color);
-    }
-
-
-    /**
-     * Set the icon to use for the toolbar's navigation button.
-     *
-     * @param resId Resource ID of a drawable to set
-     */
-    public void setNavigationIcon(@DrawableRes int resId) {
-        toolbar.setNavigationIcon(resId);
-    }
-
-
-    public void setNavigationIcon(@NonNull Drawable drawable) {
-        toolbar.setNavigationIcon(drawable);
-    }
-
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem menuItem) {
-        if (menuItem.getItemId() == android.R.id.home) {
-            onBackPressed();
-        }
-        return super.onOptionsItemSelected(menuItem);
-    }
-
-
-    @Override
-    public void setTitle(@NonNull CharSequence title) {
-        collapsingToolbar.setTitle(title);
-    }
-
-
-    public Toolbar getToolbar() {
-        return toolbar;
-    }
-
-
-    public CollapsingToolbarLayout getCollapsingToolbar() {
-        return collapsingToolbar;
-    }
-
-
-    public Items getItems() {
-        return items;
-    }
-
-
-    public MultiTypeAdapter getAdapter() {
-        return adapter;
-    }
-
-
-    public TextView getSloganTextView() {
-        return slogan;
-    }
-
-
-    public TextView getVersionTextView() {
-        return version;
-    }
-
-
-    public void setOnRecommendedClickedListener(@Nullable OnRecommendedClickedListener listener) {
-        this.onRecommendedClickedListener = listener;
-    }
-
-
-    public @Nullable OnRecommendedClickedListener getOnRecommendedClickedListener() {
-        return onRecommendedClickedListener;
-    }
-
-
-    public void setOnContributorClickedListener(@Nullable OnContributorClickedListener listener) {
-        this.onContributorClickedListener = listener;
-    }
-
-
-    public @Nullable OnContributorClickedListener getOnContributorClickedListener() {
-        return onContributorClickedListener;
-    }
+  public @Nullable OnContributorClickedListener getOnContributorClickedListener() {
+    return onContributorClickedListener;
+  }
 }

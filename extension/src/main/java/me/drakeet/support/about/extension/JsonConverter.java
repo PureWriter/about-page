@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
  */
 public interface JsonConverter {
 
-    @Nullable <T> T fromJson(@NonNull String json, @NonNull Class<T> classOfT) throws Exception;
+  @Nullable <T> T fromJson(@NonNull String json, @NonNull Class<T> classOfT) throws Exception;
 
-    @NonNull <T> String toJson(@Nullable T src, @NonNull Class<T> classOfT);
+  @NonNull <T> String toJson(@Nullable T src, @NonNull Class<T> classOfT);
 }

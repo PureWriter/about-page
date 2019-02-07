@@ -15,27 +15,24 @@ import me.drakeet.multitype.ItemViewBinder;
 @Deprecated
 public class LineViewBinder extends ItemViewBinder<Line, LineViewBinder.ViewHolder> {
 
-    @NonNull @Override
-    protected ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-        View root = inflater.inflate(R.layout.about_page_item_line, parent, false);
-        return new ViewHolder(root);
+  @NonNull @Override
+  public ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
+    View root = inflater.inflate(R.layout.about_page_item_line, parent, false);
+    return new ViewHolder(root);
+  }
+
+  @Override
+  public void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Line data) {}
+
+  public static class ViewHolder extends RecyclerView.ViewHolder {
+
+    public ViewHolder(View itemView) {
+      super(itemView);
     }
+  }
 
-
-    @Override
-    protected void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Line data) {}
-
-
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-
-        public ViewHolder(View itemView) {
-            super(itemView);
-        }
-    }
-
-
-    @Override
-    protected long getItemId(@NonNull Line item) {
-        return item.hashCode();
-    }
+  @Override
+  public long getItemId(@NonNull Line item) {
+    return item.hashCode();
+  }
 }

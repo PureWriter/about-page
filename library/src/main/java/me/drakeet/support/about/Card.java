@@ -7,10 +7,9 @@ import androidx.annotation.NonNull;
  */
 public class Card {
 
-    public @NonNull final CharSequence content;
+  public @NonNull final CharSequence content;
 
-
-    public Card(@NonNull CharSequence content) {
-        this.content = content;
-    }
+  public Card(@NonNull CharSequence content) {
+    this.content = content;
+  }
 }

@@ -10,17 +10,15 @@ import me.drakeet.support.about.extension.JsonConverter;
  */
 public class GsonJsonConverter implements JsonConverter {
 
-    private final Gson gson = new Gson();
+  private final Gson gson = new Gson();
 
+  @Override
+  public @Nullable <T> T fromJson(@Nullable String json, @NonNull Class<T> classOfT) {
+    return gson.fromJson(json, classOfT);
+  }
 
-    @Override
-    public @Nullable <T> T fromJson(@Nullable String json, @NonNull Class<T> classOfT) {
-        return gson.fromJson(json, classOfT);
-    }
-
-
-    @Override
-    public @NonNull <T> String toJson(@Nullable T src, @NonNull Class<T> classOfT) {
-        return gson.toJson(src, classOfT);
-    }
+  @Override
+  public @NonNull <T> String toJson(@Nullable T src, @NonNull Class<T> classOfT) {
+    return gson.toJson(src, classOfT);
+  }
 }
