@@ -13,15 +13,17 @@ From the [PureWriter](https://play.google.com/store/apps/details?id=com.drakeet.
 
 In your `build.gradle`:
 
-_This library has been rebuilt based on androidx. If you are still using the android support library, please use version `about:2.1.1`, `about-extension:2.1.1` and `multitype:3.4.4`._
+_This library has been rebuilt based on AndroidX. If you are still using the android support library, please use version `about:2.1.1`, `about-extension:2.1.1` and `multitype:3.4.4`._
+
+_In addition, since 2.3.0 we have migrated to build with MultiType 4.0.0. If you don't want to use MultiType 4.0.0, you can use the last stable version `multitype:3.5.0` & `about:2.2.0`._
 
 ```groovy
 dependencies {
-    implementation 'me.drakeet.support:about:2.2.0'
-    implementation 'me.drakeet.multitype:multitype:3.5.0'
+    implementation 'me.drakeet.support:about:2.3.0-alpha1'
+    implementation 'me.drakeet.multitype:multitype:4.0.0-alpha2'
     
     // extension for loading our host Android Links data
-    // implementation 'me.drakeet.support:about-extension:2.2.0'
+    // implementation 'me.drakeet.support:about-extension:2.3.0-alpha1'
     // optional: for using the PicassoImageLoader
     // implementation 'com.squareup.picasso:picasso:2.5.2'
     // optional: for using the GlideImageLoader
@@ -46,7 +48,7 @@ public class AboutActivity extends AbsAboutActivity {
     }
 
     @Override
-    protected void onItemsCreated(@NonNull Items items) {
+    protected void onItemsCreated(@NonNull List<Object> items) {
         items.add(new Category("介绍与帮助"));
         items.add(new Card(getString(R.string.card_content)));
 
