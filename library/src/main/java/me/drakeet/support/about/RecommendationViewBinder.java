@@ -21,24 +21,24 @@ import me.drakeet.multitype.ItemViewBinder;
  * @author drakeet
  */
 @SuppressWarnings("WeakerAccess")
-public class RecommendedViewBinder extends ItemViewBinder<Recommended, RecommendedViewBinder.ViewHolder> {
+public class RecommendationViewBinder extends ItemViewBinder<Recommendation, RecommendationViewBinder.ViewHolder> {
 
   private static final String TAG = "about-page";
 
   private @NonNull final AbsAboutActivity activity;
 
-  public RecommendedViewBinder(@NonNull AbsAboutActivity activity) {
+  public RecommendationViewBinder(@NonNull AbsAboutActivity activity) {
     this.activity = activity;
   }
 
   @NonNull @Override
   public ViewHolder onCreateViewHolder(@NonNull LayoutInflater inflater, @NonNull ViewGroup parent) {
-    return new ViewHolder(inflater.inflate(R.layout.about_page_item_recommended, parent, false), activity);
+    return new ViewHolder(inflater.inflate(R.layout.about_page_item_recommendation, parent, false), activity);
   }
 
   @Override
-  public void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Recommended recommended) {
-    holder.setRecommended(recommended, activity.getImageLoader());
+  public void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Recommendation recommendation) {
+    holder.setRecommendation(recommendation, activity.getImageLoader());
   }
 
   public static class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -48,7 +48,7 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
     public TextView packageName;
     public TextView sizeView;
     public TextView description;
-    public Recommended recommended;
+    public Recommendation recommendation;
     private @Nullable BottomSheetDialog bottomSheet;
     protected @NonNull final AbsAboutActivity activity;
 
@@ -66,17 +66,17 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
     @Override
     public void onClick(View v) {
       if (v.getId() == R.id.google_play && bottomSheet != null) {
-        openWithMarket(v.getContext(), recommended.packageName, recommended.downloadUrl);
+        openWithMarket(v.getContext(), recommendation.packageName, recommendation.downloadUrl);
         bottomSheet.dismiss();
       } else if (v.getId() == R.id.web && bottomSheet != null) {
-        openWithWeb(v.getContext(), recommended);
+        openWithWeb(v.getContext(), recommendation);
         bottomSheet.dismiss();
-      } else if (recommended != null) {
-        OnRecommendedClickedListener listener = activity.getOnRecommendedClickedListener();
-        if (listener != null && listener.onRecommendedClicked(v, recommended)) {
+      } else if (recommendation != null) {
+        OnRecommendationClickedListener listener = activity.getOnRecommendationClickedListener();
+        if (listener != null && listener.onRecommendationClicked(v, recommendation)) {
           return;
         }
-        if (recommended.openWithGooglePlay) {
+        if (recommendation.openWithGooglePlay) {
           bottomSheet = new BottomSheetDialog(v.getContext());
           bottomSheet.setContentView(R.layout.about_page_dialog_market_chooser);
           bottomSheet.show();
@@ -85,30 +85,30 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
           // noinspection ConstantConditions
           bottomSheet.findViewById(R.id.google_play).setOnClickListener(this);
         } else {
-          openWithWeb(v.getContext(), recommended);
+          openWithWeb(v.getContext(), recommendation);
         }
       }
     }
 
-    protected void setRecommended(@NonNull Recommended recommended, @Nullable ImageLoader imageLoader) {
-      this.recommended = recommended;
+    protected void setRecommendation(@NonNull Recommendation recommendation, @Nullable ImageLoader imageLoader) {
+      this.recommendation = recommendation;
       if (imageLoader != null) {
         icon.setVisibility(View.VISIBLE);
-        imageLoader.load(icon, recommended.iconUrl);
+        imageLoader.load(icon, recommendation.iconUrl);
       } else {
         icon.setVisibility(View.GONE);
         Log.e(TAG, "You should call AbsAboutActivity.setImageLoader() otherwise the icon will be gone.");
       }
-      name.setText(recommended.appName);
-      packageName.setText(recommended.packageName);
-      description.setText(recommended.description);
+      name.setText(recommendation.appName);
+      packageName.setText(recommendation.packageName);
+      description.setText(recommendation.description);
       @SuppressLint("SetTextI18n")
-      String size = recommended.downloadSize + "MB";
+      String size = recommendation.downloadSize + "MB";
       sizeView.setText(size);
     }
 
-    protected void openWithWeb(@NonNull Context context, @NonNull Recommended recommended) {
-      context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(recommended.downloadUrl)));
+    protected void openWithWeb(@NonNull Context context, @NonNull Recommendation recommendation) {
+      context.startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(recommendation.downloadUrl)));
     }
 
     private void openWithMarket(@NonNull Context context, @NonNull String targetPackage, @NonNull String defaultDownloadUrl) {
@@ -127,7 +127,7 @@ public class RecommendedViewBinder extends ItemViewBinder<Recommended, Recommend
   }
 
   @Override
-  public long getItemId(@NonNull Recommended item) {
+  public long getItemId(@NonNull Recommendation item) {
     return item.hashCode();
   }
 }

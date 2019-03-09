@@ -5,4 +5,4 @@
   **[] $VALUES;
   public *;
 }
--keep class me.drakeet.support.about.Recommended
+-keep class me.drakeet.support.about.Recommendation

@@ -7,7 +7,7 @@ import androidx.annotation.NonNull;
  * @author drakeet
  */
 @Keep
-public class Recommended {
+public class Recommendation {
 
   public int id;
   public String appName;
@@ -20,9 +20,9 @@ public class Recommended {
   public double downloadSize;
   public boolean openWithGooglePlay;
 
-  public Recommended() {}
+  public Recommendation() {}
 
-  public Recommended(
+  public Recommendation(
       int id,
       @NonNull String appName,
       @NonNull String iconUrl,
@@ -32,7 +32,8 @@ public class Recommended {
       @NonNull String createdTime,
       @NonNull String updatedTime,
       double downloadSize,
-      boolean openWithGooglePlay) {
+      boolean openWithGooglePlay
+  ) {
     this.id = id;
     this.appName = appName;
     this.iconUrl = iconUrl;

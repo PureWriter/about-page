@@ -12,6 +12,6 @@ public class PicassoImageLoader implements ImageLoader {
 
   @Override
   public void load(@NonNull ImageView imageView, @NonNull String url) {
-    Picasso.with(imageView.getContext()).load(url).into(imageView);
+    Picasso.get().load(url).into(imageView);
   }
 }

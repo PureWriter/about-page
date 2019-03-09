@@ -13,7 +13,7 @@ import me.drakeet.multitype.MultiTypeAdapter;
 class DividerItemDecoration extends RecyclerView.ItemDecoration {
 
   private final @NonNull MultiTypeAdapter adapter;
-  private final Class<?>[] dividerClasses = { License.class, Recommended.class };
+  private final Class<?>[] dividerClasses = { License.class, Recommendation.class };
 
   /**
    * Creates a divider {@link RecyclerView.ItemDecoration} that can be used with a

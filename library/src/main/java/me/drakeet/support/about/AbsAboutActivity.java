@@ -39,7 +39,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
   private RecyclerView recyclerView;
   private @Nullable ImageLoader imageLoader;
   private boolean initialized;
-  private @Nullable OnRecommendedClickedListener onRecommendedClickedListener;
+  private @Nullable OnRecommendationClickedListener onRecommendationClickedListener;
   private @Nullable OnContributorClickedListener onContributorClickedListener;
 
   protected abstract void onCreateHeader(@NonNull ImageView icon, @NonNull TextView slogan, @NonNull TextView version);
@@ -105,7 +105,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     adapter.register(Line.class, new LineViewBinder());
     adapter.register(Contributor.class, new ContributorViewBinder(this));
     adapter.register(License.class, new LicenseViewBinder());
-    adapter.register(Recommended.class, new RecommendedViewBinder(this));
+    adapter.register(Recommendation.class, new RecommendationViewBinder(this));
     items = new ArrayList<>();
     onItemsCreated(items);
     adapter.setItems(items);
@@ -225,12 +225,12 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     return version;
   }
 
-  public void setOnRecommendedClickedListener(@Nullable OnRecommendedClickedListener listener) {
-    this.onRecommendedClickedListener = listener;
+  public void setOnRecommendationClickedListener(@Nullable OnRecommendationClickedListener listener) {
+    this.onRecommendationClickedListener = listener;
   }
 
-  public @Nullable OnRecommendedClickedListener getOnRecommendedClickedListener() {
-    return onRecommendedClickedListener;
+  public @Nullable OnRecommendationClickedListener getOnRecommendationClickedListener() {
+    return onRecommendationClickedListener;
   }
 
   public void setOnContributorClickedListener(@Nullable OnContributorClickedListener listener) {

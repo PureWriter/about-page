@@ -47,8 +47,10 @@
         <item name="android:layout_marginRight">1dp</item>
         <item name="android:paddingTop">12dp</item>
         <item name="android:paddingBottom">12dp</item>
-        <item name="android:paddingLeft">16dp</item>
+        <item name="android:paddingLeft">@dimen/about_page_item_category_padding_horizontal</item>
         <item name="android:paddingRight">12dp</item>
+        <item name="android:paddingStart">@dimen/about_page_item_category_padding_horizontal</item>
+        <item name="android:paddingEnd">12dp</item>
         <item name="android:textColor">@color/about_page_category_text_color</item>
     </style>
 
@@ -82,6 +84,7 @@
         <item name="android:layout_width">@dimen/about_page_avatar_size</item>
         <item name="android:layout_height">@dimen/about_page_avatar_size</item>
         <item name="android:layout_marginRight">16dp</item>
+        <item name="android:layout_marginEnd">16dp</item>
     </style>
 
     <style name="AboutPage.ContributorName">

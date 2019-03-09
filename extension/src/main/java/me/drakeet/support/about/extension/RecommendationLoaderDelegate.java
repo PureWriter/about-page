@@ -1,5 +1,6 @@
 package me.drakeet.support.about.extension;
 
+import androidx.annotation.Nullable;
 import androidx.lifecycle.Lifecycle;
 import androidx.lifecycle.LifecycleObserver;
 import androidx.lifecycle.OnLifecycleEvent;
@@ -14,21 +15,21 @@ import okhttp3.Call;
  * ## Android architecture components: Lifecycle
  * -keep class android.arch.lifecycle.** { *; }
  * </pre>
- * Otherwise, you could just use the {@link RecommendedLoader} instead without any keep and no need
+ * Otherwise, you could just use the {@link RecommendationLoader} instead without any keep and no need
  * support libraries 26.1.0.
  *
  * @author drakeet
  */
-public class RecommendedLoaderDelegate implements LifecycleObserver {
+public class RecommendationLoaderDelegate implements LifecycleObserver {
 
   private final @NonNull AbsAboutActivity aboutActivity;
   private final int index;
-  private RecommendedLoader loader;
+  private RecommendationLoader loader;
   private boolean showDefaultCategory;
-  private Call call;
+  private @Nullable Call call;
   private JsonConverter jsonConverter;
 
-  private RecommendedLoaderDelegate(@NonNull AbsAboutActivity aboutActivity, int index, boolean showDefaultCategory, @NonNull JsonConverter jsonConverter) {
+  private RecommendationLoaderDelegate(@NonNull AbsAboutActivity aboutActivity, int index, boolean showDefaultCategory, @NonNull JsonConverter jsonConverter) {
     this.aboutActivity = aboutActivity;
     this.index = index;
     this.showDefaultCategory = showDefaultCategory;
@@ -40,13 +41,13 @@ public class RecommendedLoaderDelegate implements LifecycleObserver {
   }
 
   public static void attach(@NonNull AbsAboutActivity activity, int index, boolean showDefaultCategory, @NonNull JsonConverter jsonConverter) {
-    RecommendedLoaderDelegate delegate = new RecommendedLoaderDelegate(activity, index, showDefaultCategory, jsonConverter);
+    RecommendationLoaderDelegate delegate = new RecommendationLoaderDelegate(activity, index, showDefaultCategory, jsonConverter);
     activity.getLifecycle().addObserver(delegate);
     delegate.start();
   }
 
   private void start() {
-    loader = RecommendedLoader.getInstance();
+    loader = RecommendationLoader.getInstance();
     call = loader.loadInto(aboutActivity, index, showDefaultCategory, jsonConverter);
   }
 

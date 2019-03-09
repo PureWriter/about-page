@@ -17,9 +17,9 @@ import me.drakeet.support.about.Category;
 import me.drakeet.support.about.Contributor;
 import me.drakeet.support.about.License;
 import me.drakeet.support.about.OnContributorClickedListener;
-import me.drakeet.support.about.OnRecommendedClickedListener;
-import me.drakeet.support.about.Recommended;
-import me.drakeet.support.about.extension.RecommendedLoaderDelegate;
+import me.drakeet.support.about.OnRecommendationClickedListener;
+import me.drakeet.support.about.Recommendation;
+import me.drakeet.support.about.extension.RecommendationLoaderDelegate;
 import me.drakeet.support.about.extension.provided.MoshiJsonConverter;
 import me.drakeet.support.about.provided.PicassoImageLoader;
 
@@ -32,13 +32,13 @@ import static androidx.appcompat.app.AppCompatDelegate.MODE_NIGHT_YES;
 @SuppressLint("SetTextI18n")
 @SuppressWarnings("SpellCheckingInspection")
 public class AboutActivity extends AbsAboutActivity
-    implements OnRecommendedClickedListener, OnContributorClickedListener {
+    implements OnRecommendationClickedListener, OnContributorClickedListener {
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
     setImageLoader(new PicassoImageLoader());
-    setOnRecommendedClickedListener(this);
+    setOnRecommendationClickedListener(this);
     setOnContributorClickedListener(this);
   }
 
@@ -60,7 +60,7 @@ public class AboutActivity extends AbsAboutActivity
     items.add(new Contributor(R.drawable.avatar_drakeet, "小艾大人", "Developer"));
 
     items.add(new Category("我独立开发的应用"));
-    items.add(new Recommended(
+    items.add(new Recommendation(
         0, getString(R.string.pure_writer),
         "https://storage.recommend.wetolink.com/storage/app_recommend/images/YBMHN6SRpZeF0VHbPZWZGWJ2GyB6uaPx.png",
         "com.drakeet.purewriter",
@@ -69,7 +69,7 @@ public class AboutActivity extends AbsAboutActivity
         "2017-10-09 16:46:57",
         "2017-10-09 16:46:57", 2.93, true)
     );
-    items.add(new Recommended(
+    items.add(new Recommendation(
         1, getString(R.string.pure_mosaic),
         "http://image.coolapk.com/apk_logo/2016/0831/ic_pure_mosaic-2-for-16599-o_1argff2ddgvt1lfv1b3mk2vd6pq-uid-435200.png",
         "me.drakeet.puremosaic",
@@ -78,10 +78,10 @@ public class AboutActivity extends AbsAboutActivity
         "2017-10-09 16:46:57",
         "2017-10-09 16:46:57", 2.64, true)
     );
-    // Load more Recommended items from remote server asynchronously
-    RecommendedLoaderDelegate.attach(this, items.size(), new MoshiJsonConverter() /* or new GsonJsonConverter() */);
+    // Load more Recommendation items from remote server asynchronously
+    RecommendationLoaderDelegate.attach(this, items.size(), new MoshiJsonConverter() /* or new GsonJsonConverter() */);
     // or
-    // RecommendedLoader.getInstance().loadInto(this, items.size());
+    // RecommendationLoader.getInstance().loadInto(this, items.size());
 
     items.add(new Category("Open Source Licenses"));
     items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
@@ -111,8 +111,8 @@ public class AboutActivity extends AbsAboutActivity
   }
 
   @Override
-  public boolean onRecommendedClicked(@NonNull View itemView, @NonNull Recommended recommended) {
-    Toast.makeText(this, "onRecommendedClicked: " + recommended.appName, Toast.LENGTH_SHORT).show();
+  public boolean onRecommendationClicked(@NonNull View itemView, @NonNull Recommendation recommendation) {
+    Toast.makeText(this, "onRecommendationClicked: " + recommendation.appName, Toast.LENGTH_SHORT).show();
     return false;
   }
 

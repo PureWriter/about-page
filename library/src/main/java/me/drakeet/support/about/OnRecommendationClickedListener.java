@@ -7,8 +7,8 @@ import android.view.View;
 /**
  * @author drakeet
  */
-public interface OnRecommendedClickedListener {
+public interface OnRecommendationClickedListener {
 
   @CheckResult
-  boolean onRecommendedClicked(@NonNull View itemView, @NonNull Recommended recommended);
+  boolean onRecommendationClicked(@NonNull View itemView, @NonNull Recommendation recommendation);
 }

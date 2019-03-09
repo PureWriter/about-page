@@ -2,14 +2,13 @@ package me.drakeet.support.about.extension;
 
 import androidx.annotation.Keep;
 import java.util.List;
-import me.drakeet.support.about.Recommended;
+import me.drakeet.support.about.Recommendation;
 
 /**
  * @author drakeet
  */
 @Keep
-public class RecommendedResponse {
-
+public class RecommendationResponse {
   public int code;
-  public List<Recommended> data;
+  public List<Recommendation> data;
 }
