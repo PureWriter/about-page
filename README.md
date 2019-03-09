@@ -19,19 +19,19 @@ _In addition, since 2.3.0 we have migrated to build with MultiType 4.0.0. If you
 
 ```groovy
 dependencies {
-    implementation 'me.drakeet.support:about:2.3.0-alpha1'
+    implementation 'me.drakeet.support:about:2.3.0-alpha2'
     implementation 'me.drakeet.multitype:multitype:4.0.0-alpha2'
     
     // extension for loading our host Android Links data
-    // implementation 'me.drakeet.support:about-extension:2.3.0-alpha1'
+    // implementation 'me.drakeet.support:about-extension:2.3.0-alpha2'
     // optional: for using the PicassoImageLoader
-    // implementation 'com.squareup.picasso:picasso:2.5.2'
+    // implementation 'com.squareup.picasso:picasso:2.71828'
     // optional: for using the GlideImageLoader
-    // implementation 'com.github.bumptech.glide:glide:4.8.0'
+    // implementation 'com.github.bumptech.glide:glide:4.9.0'
     // optional: for using the GsonJsonConverter
     // implementation 'com.google.code.gson:gson:2.8.5'
     // optional: for using the MoshiJsonConverter
-    // implementation 'com.squareup.moshi:moshi:1.5.0'
+    // implementation 'com.squareup.moshi:moshi:1.7.0'
 }
 ```
 
