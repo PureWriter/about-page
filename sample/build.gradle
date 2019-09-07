@@ -3,11 +3,11 @@ apply plugin: 'com.android.application'
 android {
   compileSdkVersion 28
   defaultConfig {
-    applicationId "me.drakeet.support.about.sample"
+    applicationId "com.drakeet.about.sample"
     minSdkVersion 14
     targetSdkVersion 28
-    versionCode 77
-    versionName "2.3.0-alpha2"
+    versionCode 78
+    versionName "2.3.0"
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
   }
   buildTypes {
@@ -30,6 +30,6 @@ dependencies {
   // for using the PicassoImageLoader
   implementation 'com.squareup.picasso:picasso:2.71828'
   implementation 'com.squareup.moshi:moshi:1.7.0'
-  implementation 'me.drakeet.multitype:multitype:4.0.0-alpha2'
+  implementation 'com.drakeet.multitype:multitype:4.0.0'
   implementation 'com.google.android.material:material:1.1.0-alpha04'
 }

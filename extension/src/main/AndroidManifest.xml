@@ -1,6 +1,6 @@
 <manifest
     xmlns:android="http://schemas.android.com/apk/res/android"
-    package="me.drakeet.support.about.extension">
+    package="com.drakeet.about.extension">
 
     <uses-permission android:name="android.permission.INTERNET"/>
 

@@ -8,8 +8,8 @@ android {
   defaultConfig {
     minSdkVersion 14
     targetSdkVersion 28
-    versionCode 9
-    versionName "2.3.0-alpha2"
+    versionCode 10
+    versionName "2.3.0"
     vectorDrawables.useSupportLibrary = true
 
     testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
@@ -29,8 +29,8 @@ dependencies {
   androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0-beta02', {
     exclude group: 'com.android.support', module: 'support-annotations'
   })
-  implementation 'com.squareup.okhttp3:okhttp:3.12.1'
-  implementation 'me.drakeet.multitype:multitype:4.0.0-alpha2'
+  implementation 'com.squareup.okhttp3:okhttp:3.12.4'
+  implementation 'com.drakeet.multitype:multitype:4.0.0'
   compileOnly 'com.google.code.gson:gson:2.8.5'
   compileOnly 'com.squareup.moshi:moshi:1.7.0'
   compileOnly project(':library')
