@@ -23,7 +23,7 @@ dependencies {
     implementation 'com.drakeet.multitype:multitype:4.0.0'
     
     // extension for loading our host Android Links data
-    // implementation 'com.drakeet.support:about-extension:2.3.1'
+    // implementation 'com.drakeet.about:about-extension:2.3.1'
     // optional: for using the PicassoImageLoader
     // implementation 'com.squareup.picasso:picasso:2.71828'
     // optional: for using the GlideImageLoader
