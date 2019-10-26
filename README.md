@@ -1,7 +1,7 @@
 # about-page
 
 [![License](https://img.shields.io/badge/license-Apache%202.0-blue.svg)](https://github.com/drakeet/about-page/blob/master/LICENSE)
-![maven-central](https://img.shields.io/maven-central/v/me.drakeet.support/about.svg)
+![maven-central](https://img.shields.io/maven-central/v/com.drakeet.about/about.svg)
 
 A nice about page based on [MultiType](https://github.com/drakeet/MultiType), material design and very easy to use.
 
