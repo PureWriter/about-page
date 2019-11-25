@@ -136,11 +136,11 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     setHeaderBackground(resId);
   }
 
-  private void setHeaderBackground(@DrawableRes int resId) {
+  public void setHeaderBackground(@DrawableRes int resId) {
     setHeaderBackground(ContextCompat.getDrawable(this, resId));
   }
 
-  private void setHeaderBackground(@NonNull Drawable drawable) {
+  public void setHeaderBackground(@NonNull Drawable drawable) {
     ViewCompat.setBackground(headerContentLayout, drawable);
   }
 
