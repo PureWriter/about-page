@@ -78,6 +78,7 @@
         <item name="android:textColorLink">@color/about_page_link_text_color</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/about_page_card_text_color</item>
+        <item name="android:textIsSelectable">true</item>
     </style>
 
     <style name="AboutPage.ContributorAvatar">
