@@ -4,13 +4,12 @@ import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import androidx.annotation.ColorInt;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.LayoutRes;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBar;
@@ -58,25 +57,15 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     return imageLoader;
   }
 
-  @Override
-  public final void setContentView(View view) {
-    super.setContentView(view);
-  }
-
-  @Override
-  public final void setContentView(int layoutResID) {
-    super.setContentView(layoutResID);
-  }
-
-  @Override
-  public final void setContentView(View view, ViewGroup.LayoutParams params) {
-    super.setContentView(view, params);
+  @LayoutRes
+  protected int layoutRes() {
+    return R.layout.about_page_main_activity;
   }
 
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
-    setContentView(R.layout.about_page_main_activity);
+    setContentView(layoutRes());
     toolbar = findViewById(R.id.toolbar);
     ImageView icon = findViewById(R.id.icon);
     slogan = findViewById(R.id.slogan);
