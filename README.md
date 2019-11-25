@@ -19,11 +19,11 @@ _In addition, since 2.3.0 we have migrated to build with MultiType 4.0.0. If you
 
 ```groovy
 dependencies {
-    implementation 'com.drakeet.about:about:2.3.1'
+    implementation 'com.drakeet.about:about:2.4.0'
     implementation 'com.drakeet.multitype:multitype:4.0.0'
     
     // extension for loading our host Android Links data
-    // implementation 'com.drakeet.about:about-extension:2.3.1'
+    // implementation 'com.drakeet.about:about-extension:2.4.0'
     // optional: for using the PicassoImageLoader
     // implementation 'com.squareup.picasso:picasso:2.71828'
     // optional: for using the GlideImageLoader
