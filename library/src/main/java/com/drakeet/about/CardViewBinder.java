@@ -1,5 +1,6 @@
 package com.drakeet.about;
 
+import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,9 @@ public class CardViewBinder extends ItemViewBinder<Card, CardViewBinder.ViewHold
 
   @Override
   public void onBindViewHolder(@NonNull ViewHolder holder, @NonNull Card card) {
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+      holder.content.setLineSpacing(card.lineSpacingExtra, holder.content.getLineSpacingMultiplier());
+    }
     holder.content.setText(card.content);
   }
 
