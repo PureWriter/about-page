@@ -1,3 +1,3 @@
-//include ':sample'
+include ':sample'
 include ':library'
 include ':extension'
