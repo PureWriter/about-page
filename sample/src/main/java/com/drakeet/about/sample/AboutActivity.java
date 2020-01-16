@@ -2,6 +2,7 @@ package com.drakeet.about.sample;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.ClipboardManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -14,6 +15,7 @@ import com.drakeet.about.AbsAboutActivity;
 import com.drakeet.about.Card;
 import com.drakeet.about.Category;
 import com.drakeet.about.Contributor;
+import com.drakeet.about.ClickableItem;
 import com.drakeet.about.License;
 import com.drakeet.about.OnContributorClickedListener;
 import com.drakeet.about.OnRecommendationClickedListener;
@@ -82,6 +84,22 @@ public class AboutActivity extends AbsAboutActivity
     RecommendationLoaderDelegate.attach(this, items.size(), new MoshiJsonConverter() /* or new GsonJsonConverter() */);
     // or
     // RecommendationLoader.getInstance().loadInto(this, items.size());
+
+      items.add(new Category("Customize OnClickListener"));
+      items.add(new ClickableItem("Toast", "Click to toast a message", new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              Toast.makeText(getApplicationContext(), "I'm toasing a message", Toast.LENGTH_SHORT).show();
+          }
+      }));
+      items.add(new ClickableItem("Copy", "Click here to copy app name", new View.OnClickListener() {
+          @Override
+          public void onClick(View v) {
+              ClipboardManager clipboard = (ClipboardManager) getSystemService(CLIPBOARD_SERVICE);
+              clipboard.setText(getString(R.string.app_name));
+              Toast.makeText(getApplicationContext(), "App name copied", Toast.LENGTH_SHORT).show();
+          }
+      }));
 
     items.add(new Category("Open Source Licenses"));
     items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));

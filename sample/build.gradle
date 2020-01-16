@@ -19,7 +19,7 @@ android {
 }
 
 dependencies {
-  implementation 'androidx.appcompat:appcompat:1.1.0-alpha02'
+  implementation 'androidx.appcompat:appcompat:1.2.0-alpha01'
   testImplementation 'junit:junit:4.12'
 
   implementation project(':library')
@@ -31,5 +31,5 @@ dependencies {
   implementation 'com.squareup.picasso:picasso:2.71828'
   implementation 'com.squareup.moshi:moshi:1.7.0'
   implementation 'com.drakeet.multitype:multitype:4.0.0'
-  implementation 'com.google.android.material:material:1.1.0-alpha04'
+  implementation 'com.google.android.material:material:1.2.0-alpha03'
 }

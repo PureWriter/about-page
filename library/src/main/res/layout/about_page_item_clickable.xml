@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item"
+    style="@style/AboutPage.Item.Card">
+
+    <TextView
+        style="@style/AboutPage.ContributorName"
+        android:id="@+id/name"
+        tools:text="Wilson"/>
+
+    <TextView
+        style="@style/AboutPage.ContributorDesc"
+        android:id="@+id/desc"
+        android:layout_below="@id/name"
+        tools:text="Developer and Designer"/>
+
+</RelativeLayout>

@@ -93,6 +93,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
     adapter.register(Card.class, new CardViewBinder());
     adapter.register(Line.class, new LineViewBinder());
     adapter.register(Contributor.class, new ContributorViewBinder(this));
+    adapter.register(ClickableItem.class, new ClickableItemViewBinder(this));
     adapter.register(License.class, new LicenseViewBinder());
     adapter.register(Recommendation.class, new RecommendationViewBinder(this));
     items = new ArrayList<>();
