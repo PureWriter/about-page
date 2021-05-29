@@ -1,6 +1,5 @@
 package com.drakeet.about;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -71,7 +70,7 @@ public class ContributorViewBinder extends ItemViewBinder<Contributor, Contribut
         intent.setData(parse(data.url));
         try {
           v.getContext().startActivity(intent);
-        } catch (ActivityNotFoundException e) {
+        } catch (Exception e) {
           e.printStackTrace();
         }
       }
