@@ -1,6 +1,5 @@
 package com.drakeet.about;
 
-import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.view.View;
 import androidx.annotation.Nullable;
@@ -24,7 +23,7 @@ public class ClickableViewHolder extends RecyclerView.ViewHolder {
           intent.setData(parse(url));
           try {
             v.getContext().startActivity(intent);
-          } catch (ActivityNotFoundException e) {
+          } catch (Exception e) {
             e.printStackTrace();
           }
         }
