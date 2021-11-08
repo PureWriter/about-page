@@ -14,4 +14,5 @@
     <color name="about_page_desc_color">@color/about_page_hint</color>
     <color name="about_page_license_title">@color/about_page_card_text_color</color>
     <color name="about_page_hint">#80ffffff</color>
+    <color name="about_page_navigationBarColor">#5C000000</color>
 </resources>
