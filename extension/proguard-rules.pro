@@ -1,2 +1,0 @@
--keep class com.drakeet.about.extension.RecommendationResponse
--keep class com.drakeet.about.extension.RecommendationLoaderDelegate

@@ -18,8 +18,6 @@ import com.drakeet.about.License;
 import com.drakeet.about.OnContributorClickedListener;
 import com.drakeet.about.OnRecommendationClickedListener;
 import com.drakeet.about.Recommendation;
-import com.drakeet.about.extension.RecommendationLoaderDelegate;
-import com.drakeet.about.extension.provided.MoshiJsonConverter;
 import com.drakeet.about.provided.PicassoImageLoader;
 import java.util.List;
 
@@ -78,10 +76,6 @@ public class AboutActivity extends AbsAboutActivity
         "2017-10-09 16:46:57",
         "2017-10-09 16:46:57", 2.64, true)
     );
-    // Load more Recommendation items from remote server asynchronously
-    RecommendationLoaderDelegate.attach(this, items.size(), new MoshiJsonConverter() /* or new GsonJsonConverter() */);
-    // or
-    // RecommendationLoader.getInstance().loadInto(this, items.size());
 
     items.add(new Category("Open Source Licenses"));
     items.add(new License("about-page", "drakeet", License.APACHE_2, "https://github.com/drakeet/about-page"));
