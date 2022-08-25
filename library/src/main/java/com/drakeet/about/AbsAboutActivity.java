@@ -115,7 +115,7 @@ public abstract class AbsAboutActivity extends AppCompatActivity {
       @Override
       public WindowInsetsCompat onApplyWindowInsets(View v, WindowInsetsCompat windowInsets) {
         Insets navigationBarsInsets = windowInsets.getInsets(WindowInsetsCompat.Type.navigationBars());
-        boolean isGestureNavigation = navigationBarsInsets.bottom <= 20 * getResources().getDisplayMetrics().density;
+        boolean isGestureNavigation = navigationBarsInsets.bottom <= 24 * getResources().getDisplayMetrics().density;
 
         if (!isGestureNavigation) {
           ViewCompat.onApplyWindowInsets(decorView, windowInsets);
