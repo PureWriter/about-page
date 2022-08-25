@@ -19,7 +19,7 @@ _In addition, since 2.3.0 we have migrated to build with MultiType 4.0.0. If you
 
 ```groovy
 dependencies {
-    implementation 'com.drakeet.about:about:2.5.1'
+    implementation 'com.drakeet.about:about:2.5.2'
     implementation 'com.drakeet.multitype:multitype:4.3.0'
     
     // optional: for using the PicassoImageLoader
